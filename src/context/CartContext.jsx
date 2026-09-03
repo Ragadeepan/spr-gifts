@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { siteConfig } from "../data/siteConfig";
 
 const CartContext = createContext(null);
 const storageKey = "spr-gifts-cart";
@@ -47,7 +48,7 @@ export function CartProvider({ children }) {
           name: product.name,
           price: product.price,
           quantity,
-          image: product.images?.[0] || "/images/products/product-placeholder.svg",
+          image: product.images?.[0] || siteConfig.productPlaceholder,
         },
       ];
     });

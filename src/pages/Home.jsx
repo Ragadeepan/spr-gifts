@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CategorySlider } from "../components/CategorySlider";
 import { InstagramButton } from "../components/InstagramButton";
 import { ProductGrid } from "../components/ProductGrid";
+import { ProductSlider } from "../components/ProductSlider";
 import { SectionTitle } from "../components/SectionTitle";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { categories } from "../data/categories";
@@ -60,7 +61,7 @@ export function Home() {
 
       <section className="section">
         <SectionTitle eyebrow="Customer Favourites" title="Best Sellers" />
-        <ProductGrid products={bestSellers} />
+        <ProductSlider products={bestSellers} title="Best Sellers" />
       </section>
 
       <section className="section split-band">

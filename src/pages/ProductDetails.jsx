@@ -1,5 +1,5 @@
 import { Minus, Plus, ShoppingBag } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { getCategoryById } from "../data/categories";
@@ -14,6 +14,7 @@ export function ProductDetails() {
   const product = getProductBySlug(slug);
   const [quantity, setQuantity] = useState(1);
   const [activeIndex, setActiveIndex] = useState(0);
+  const swipeStartX = useRef(null);
   const { addToCart } = useCart();
   const category = product ? getCategoryById(product.category) : null;
 
@@ -69,17 +70,37 @@ export function ProductDetails() {
 
   const handlePrev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length);
   const handleNext = () => setActiveIndex((i) => (i + 1) % images.length);
+  const handlePointerDown = (event) => {
+    if (images.length <= 1) return;
+    swipeStartX.current = event.clientX;
+  };
+  const handlePointerUp = (event) => {
+    if (images.length <= 1 || swipeStartX.current === null) return;
+    const distance = event.clientX - swipeStartX.current;
+    swipeStartX.current = null;
+    if (Math.abs(distance) < 42) return;
+    if (distance > 0) handlePrev();
+    else handleNext();
+  };
 
   return (
     <section className="page section product-detail">
       <div className="gallery">
-        <div className="main-product-image-wrap">
+        <div
+          className="main-product-image-wrap"
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={() => {
+            swipeStartX.current = null;
+          }}
+        >
           <img
             className="main-product-image"
             src={activeImage}
             alt={product.name}
             width="900"
             height="1100"
+            draggable="false"
             onError={(event) => {
               event.currentTarget.src = siteConfig.productPlaceholder;
             }}
@@ -116,10 +137,12 @@ export function ProductDetails() {
             ))}
           </div>
         )}
-        <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 6 }}>
-          <button className="outline-button" type="button" onClick={handlePrev} aria-label="Previous image" style={{ minWidth: 44, padding: "0 14px" }}>‹</button>
-          <button className="outline-button" type="button" onClick={handleNext} aria-label="Next image" style={{ minWidth: 44, padding: "0 14px" }}>›</button>
-        </div>
+        {images.length > 1 && (
+          <div className="gallery-nav">
+            <button className="outline-button" type="button" onClick={handlePrev} aria-label="Previous image">‹</button>
+            <button className="outline-button" type="button" onClick={handleNext} aria-label="Next image">›</button>
+          </div>
+        )}
       </div>
 
       <article className="product-info">

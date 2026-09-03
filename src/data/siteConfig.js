@@ -14,9 +14,9 @@ export const siteConfig = {
   currencySymbol: "₹",
   canonicalUrl: "https://www.sprgifts.in",
   logo: "/logo/spr-gifts-logo.png",
-  heroImage: "/images/hero/luxury-gift-hero.svg",
-  productPlaceholder: "/images/products/product-placeholder.svg",
-  categoryPlaceholder: "/images/categories/category-placeholder.svg",
+  heroImage: "/images/hero/luxury-gift-hero.webp",
+  productPlaceholder: "/images/products/product-fallback.webp",
+  categoryPlaceholder: "/images/categories/category-fallback.webp",
   theme: {
     black: "#0a0604",
     ink: "#1a1208",

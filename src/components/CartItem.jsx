@@ -1,10 +1,20 @@
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { siteConfig } from "../data/siteConfig";
 import { formatPrice } from "../utils/formatPrice";
 
 export function CartItem({ item, increase, decrease, remove }) {
   return (
     <div className="cart-item">
-      <img src={item.image} alt={item.name} width="88" height="88" loading="lazy" />
+      <img
+        src={item.image || siteConfig.productPlaceholder}
+        alt={item.name}
+        width="88"
+        height="88"
+        loading="lazy"
+        onError={(event) => {
+          event.currentTarget.src = siteConfig.productPlaceholder;
+        }}
+      />
       <div>
         <h3>{item.name}</h3>
         <p>{formatPrice(item.price)}</p>

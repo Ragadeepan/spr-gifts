@@ -10,7 +10,7 @@ export const products = [
     shortDescription: "A premium custom gift box with personal message styling.",
     description:
       "A thoughtfully arranged custom gift box for birthdays, anniversaries and meaningful surprises. Replace the placeholder images with your actual product photos when ready.",
-    images: ["/images/products/personalized-memory-gift-box.svg"],
+    images: ["/images/products/personalized-memory-gift-box.webp"],
     video: null,
     featured: true,
     available: true,
@@ -31,7 +31,7 @@ export const products = [
     shortDescription: "A personal gift concept centered on name or initials.",
     description:
       "A simple personalized gift option for names, initials or short messages. Final style and availability are confirmed through WhatsApp.",
-    images: ["/images/products/name-initial-custom-gift.svg"],
+    images: ["/images/products/name-initial-custom-gift.webp"],
     video: null,
     featured: false,
     available: true,
@@ -52,7 +52,7 @@ export const products = [
     shortDescription: "Gift-ready earrings box with a premium rose-gold feel.",
     description:
       "An elegant earrings gift box arranged for a polished gifting moment. Replace placeholder images with the exact earring styles you sell.",
-    images: ["/images/products/rose-gold-earrings-gift-box.svg"],
+    images: ["/images/products/rose-gold-earrings-gift-box.webp"],
     video: null,
     featured: true,
     available: true,
@@ -73,7 +73,7 @@ export const products = [
     shortDescription: "A compact jewellery gift box for small surprises.",
     description:
       "A compact earrings gift box suitable for thoughtful gifting. Product details can be updated anytime from products.js.",
-    images: ["/images/products/mini-earrings-surprise-box.svg"],
+    images: ["/images/products/mini-earrings-surprise-box.webp"],
     video: null,
     featured: false,
     available: true,
@@ -94,7 +94,7 @@ export const products = [
     shortDescription: "A fuller gift box presentation for special occasions.",
     description:
       "A premium 16-piece gifting concept with a rich, curated presentation. Final inclusions can be adjusted later in product data.",
-    images: ["/images/products/premium-16-piece-gift-box.svg"],
+    images: ["/images/products/premium-16-piece-gift-box.webp"],
     video: null,
     featured: true,
     available: true,
@@ -115,7 +115,7 @@ export const products = [
     shortDescription: "A celebration-ready box for birthdays and surprises.",
     description:
       "A special occasion gift box that can be customized with your theme, message and preferred color direction.",
-    images: ["/images/products/celebration-16-piece-gift-box.svg"],
+    images: ["/images/products/celebration-16-piece-gift-box.webp"],
     video: null,
     featured: false,
     available: true,
@@ -136,7 +136,7 @@ export const products = [
     shortDescription: "Premium handmade pink rose bouquet.",
     description:
       "A beautiful premium bouquet suitable for birthdays, anniversaries and special occasions.",
-    images: ["/images/products/pink-rose-bouquet.svg"],
+    images: ["/images/products/pink-rose-bouquet.webp"],
     video: null,
     featured: true,
     available: true,
@@ -157,7 +157,7 @@ export const products = [
     shortDescription: "A timeless bouquet for warm special moments.",
     description:
       "A classic flower bouquet presentation designed for gifting. Replace with real product photos before launch.",
-    images: ["/images/products/classic-flower-bouquet.svg"],
+    images: ["/images/products/classic-flower-bouquet.webp"],
     video: null,
     featured: false,
     available: true,
@@ -178,7 +178,7 @@ export const products = [
     shortDescription: "A bouquet crafted around your preferred theme.",
     description:
       "A custom bouquet planned around your color palette, occasion and personal message. Confirm design details on WhatsApp.",
-    images: ["/images/products/custom-theme-bouquet.svg"],
+    images: ["/images/products/custom-theme-bouquet.webp"],
     video: null,
     featured: true,
     available: true,
@@ -199,7 +199,7 @@ export const products = [
     shortDescription: "A custom bouquet concept with a personal message.",
     description:
       "A personalized bouquet idea for special messages, photos or themed gifting requests.",
-    images: ["/images/products/photo-message-bouquet.svg"],
+    images: ["/images/products/photo-message-bouquet.webp"],
     video: null,
     featured: false,
     available: false,
@@ -220,7 +220,7 @@ export const products = [
     shortDescription: "A sweet premium bouquet for chocolate lovers.",
     description:
       "A premium chocolate bouquet arranged for birthdays, friendship surprises and celebration gifting.",
-    images: ["/images/products/premium-chocolate-bouquet.svg"],
+    images: ["/images/products/premium-chocolate-bouquet.webp"],
     video: null,
     featured: true,
     available: true,
@@ -241,7 +241,7 @@ export const products = [
     shortDescription: "A compact chocolate bouquet for small surprises.",
     description:
       "A compact chocolate bouquet option with premium wrapping and a gift-ready look.",
-    images: ["/images/products/mini-chocolate-bouquet.svg"],
+    images: ["/images/products/mini-chocolate-bouquet.webp"],
     video: null,
     featured: false,
     available: true,
