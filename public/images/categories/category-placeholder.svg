@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Replace this category placeholder with a real category image">
+  <rect width="800" height="600" fill="#fffaf2"/>
+  <rect x="44" y="44" width="712" height="512" rx="18" fill="#f4e5d8" stroke="#c89b3c" stroke-width="4"/>
+  <text x="400" y="292" text-anchor="middle" font-family="Georgia, serif" font-size="48" fill="#201714">CATEGORY IMAGE</text>
+  <text x="400" y="346" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#735f57">Replace in public/images/categories</text>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "name": "SPR GIFTS.IN",
+  "short_name": "SPR GIFTS.IN",
+  "description": "Premium gifts, bouquets and personalized surprises.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf2",
+  "theme_color": "#090706",
+  "icons": [
+    {
+      "src": "/logo/spr-gifts-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
