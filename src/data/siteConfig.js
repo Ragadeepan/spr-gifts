@@ -6,8 +6,8 @@ export const siteConfig = {
   subheadline: "Premium Gifts • Personalized Moments • Beautiful Memories",
   description:
     "Premium gifts, beautiful bouquets and personalized surprises made for every special moment. Order from SPR GIFTS.IN through WhatsApp.",
-  whatsappNumber: "919600849306",
-  whatsappDisplayNumber: "9600849306",
+  whatsappNumber: "919600849307",
+  whatsappDisplayNumber: "9600849307",
   instagramUrl: "https://www.instagram.com/spr_gifts.in/",
   instagramHandle: "@spr_gifts.in",
   currency: "INR",

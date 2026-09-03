@@ -92,8 +92,8 @@ src/data/siteConfig.js
 Change:
 
 ```js
-whatsappNumber: "919600849306",
-whatsappDisplayNumber: "9600849306",
+whatsappNumber: "919600849307",
+whatsappDisplayNumber: "9600849307",
 ```
 
 `whatsappNumber` is used for WhatsApp links. Keep country code and no `+`.
