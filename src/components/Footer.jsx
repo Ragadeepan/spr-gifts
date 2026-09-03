@@ -1,3 +1,4 @@
+import { Instagram, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories } from "../data/categories";
 import { siteConfig } from "../data/siteConfig";
@@ -13,6 +14,9 @@ export function Footer() {
           <img src={siteConfig.logo} alt={`${siteConfig.brandName} logo`} />
           <h2>{siteConfig.brandName}</h2>
           <p>{siteConfig.tagline}</p>
+          <p style={{ marginTop: 10, color: "var(--muted)", fontSize: "0.88rem" }}>
+            Premium gifts, customized bouquets and personalized surprises made for every special moment.
+          </p>
         </div>
         <div>
           <h3>Quick Links</h3>
@@ -22,7 +26,7 @@ export function Footer() {
           <Link to="/contact">Contact</Link>
         </div>
         <div>
-          <h3>Categories</h3>
+          <h3>Collections</h3>
           {footerCategories.map((category) => (
             <Link key={category.id} to={`/shop?category=${category.slug}`}>
               {category.name}
@@ -30,17 +34,19 @@ export function Footer() {
           ))}
         </div>
         <div>
-          <h3>Contact</h3>
-          <a href={createWhatsAppUrl()} target="_blank" rel="noreferrer">
-            WhatsApp: {siteConfig.whatsappDisplayNumber}
+          <h3>Get in Touch</h3>
+          <a href={createWhatsAppUrl()} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <MessageCircle size={15} /> WhatsApp: {siteConfig.whatsappDisplayNumber}
           </a>
-          <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
-            Follow us on Instagram
+          <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <Instagram size={15} /> {siteConfig.instagramHandle}
           </a>
-          <span>{siteConfig.instagramHandle}</span>
+          <span style={{ color: "var(--muted)", marginTop: 10, fontSize: "0.84rem" }}>
+            Order requests confirmed via WhatsApp.
+          </span>
         </div>
       </div>
-      <p className="copyright">© 2026 {siteConfig.brandName}. All rights reserved.</p>
+      <p className="copyright">© 2026 {siteConfig.brandName}. Crafted for special moments.</p>
     </footer>
   );
 }

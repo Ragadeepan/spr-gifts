@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><rect width="800" height="600" fill="#fffaf2"/><path d="M400 430L255 190h290z" fill="#17110f"/><g fill="#5b3024" stroke="#c89b3c" stroke-width="6"><rect x="300" y="165" width="80" height="95" rx="12"/><rect x="410" y="145" width="80" height="95" rx="12"/><rect x="360" y="245" width="80" height="95" rx="12"/></g><text x="400" y="520" text-anchor="middle" font-family="Georgia,serif" font-size="42" fill="#201714">Chocolate Bouquets</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1208"/><stop offset="1" stop-color="#0a0604"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#d4af63" stop-opacity=".3"/><stop offset="1" stop-color="#d4af63" stop-opacity="0"/></radialGradient>
+    <linearGradient id="boxG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2814"/><stop offset="1" stop-color="#1a1208"/></linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c08a3a"/><stop offset=".5" stop-color="#f1d187"/><stop offset="1" stop-color="#c08a3a"/></linearGradient>
+    <radialGradient id="choco" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#8b5a2b"/><stop offset=".6" stop-color="#5b3818"/><stop offset="1" stop-color="#2a1808"/></radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <g transform="translate(400 350)">
+    <path d="M -260 60 Q -290 140 -200 160 L 200 160 Q 290 140 260 60 Z" fill="#2a1c10"/>
+    <ellipse cx="0" cy="60" rx="260" ry="50" fill="#1a1208"/>
+    <g>
+      <g transform="translate(-160 -20)"><circle r="55" fill="url(#choco)"/><circle r="30" fill="none" stroke="#c08a3a" stroke-width="2" opacity=".5"/></g>
+      <g transform="translate(-70 -25)"><circle r="62" fill="url(#choco)"/><rect x="-32" y="-32" width="64" height="64" rx="6" fill="none" stroke="#c08a3a" stroke-width="2" opacity=".5"/></g>
+      <g transform="translate(30 -30)"><circle r="68" fill="url(#choco)"/><path d="M -38 0 L 38 0 M 0 -38 L 0 38" stroke="#c08a3a" stroke-width="2" opacity=".5"/></g>
+      <g transform="translate(125 -25)"><circle r="58" fill="url(#choco)"/><rect x="-30" y="-30" width="60" height="60" rx="4" fill="none" stroke="#c08a3a" stroke-width="2" opacity=".5"/></g>
+      <g transform="translate(210 -20)"><circle r="50" fill="url(#choco)"/><circle r="26" fill="none" stroke="#c08a3a" stroke-width="2" opacity=".5"/></g>
+    </g>
+    <rect x="-10" y="-40" width="20" height="200" fill="url(#ribbon)"/>
+    <g transform="translate(0 -55)">
+      <path d="M 0 0 C -36 -70 -140 -70 -110 0 C -82 26 0 26 0 26 C 0 26 82 26 110 0 C 140 -70 36 -70 0 0 Z" fill="url(#ribbon)"/>
+      <circle r="12" fill="#1a1208" stroke="url(#ribbon)" stroke-width="5"/>
+    </g>
+  </g>
+</svg>

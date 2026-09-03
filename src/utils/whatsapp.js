@@ -8,42 +8,45 @@ export function createWhatsAppUrl(message = `Hello ${siteConfig.brandName}`) {
 }
 
 export function createCartMessage(items, subtotal) {
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+
   const lines = [
-    `Hello ${siteConfig.brandName} 👋`,
+    `Hello ${siteConfig.brandName} \u{1F44B}`,
     "",
-    "I would like to order:",
+    "I would like to enquire/order for the following products:",
     "",
-    ...items.flatMap((item, index) => [
-      `${index + 1}. ${item.name}`,
-      `Quantity: ${item.quantity}`,
-      `Price: ${formatPrice(item.price)}`,
-      "",
-    ]),
-    `Total: ${formatPrice(subtotal)}`,
-    "",
-    "Please confirm availability and order details.",
-    "",
-    "Thank you.",
   ];
+
+  items.forEach((item, index) => {
+    lines.push(`${index + 1}. ${item.name}`);
+    lines.push(`Quantity: ${item.quantity}`);
+    lines.push(`Price: ${formatPrice(item.price)}`);
+    lines.push("");
+  });
+
+  lines.push(`Total Items: ${totalItems}`);
+  if (subtotal) lines.push(`Estimated Total: ${formatPrice(subtotal)}`);
+  lines.push("");
+  lines.push("Please share availability, customization options and final price.");
+  lines.push("");
+  lines.push("Thank you \u2764\uFE0F");
 
   return lines.join("\n");
 }
 
 export function createProductMessage(product, quantity, productUrl = "") {
   const lines = [
-    `Hello ${siteConfig.brandName} 👋`,
+    `Hello ${siteConfig.brandName} \u{1F44B}`,
     "",
-    "I am interested in:",
+    "I'm interested in:",
     "",
     `Product: ${product.name}`,
-    `Product ID: ${product.id}`,
-    `Price: ${formatPrice(product.price)}`,
     `Quantity: ${quantity}`,
   ];
 
   if (productUrl) lines.push(`Product URL: ${productUrl}`);
 
-  lines.push("", "Please share availability and order details.", "", "Thank you.");
+  lines.push("", "Please share details and availability.", "", "Thank you \u2764\uFE0F");
   return lines.join("\n");
 }
 

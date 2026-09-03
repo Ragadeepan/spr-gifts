@@ -84,7 +84,7 @@ export function Shop() {
           type="search"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search products, categories or tags"
+          placeholder="Search bouquets, earrings, gift boxes…"
           aria-label="Search products"
         />
         <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort products">

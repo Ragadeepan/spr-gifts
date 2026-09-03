@@ -10,14 +10,14 @@ export function CartItem({ item, increase, decrease, remove }) {
         <p>{formatPrice(item.price)}</p>
         <div className="quantity-row" aria-label={`Quantity for ${item.name}`}>
           <button type="button" onClick={() => decrease(item.id)} aria-label="Decrease quantity">
-            <Minus size={15} />
+            <Minus size={14} />
           </button>
           <span>{item.quantity}</span>
           <button type="button" onClick={() => increase(item.id)} aria-label="Increase quantity">
-            <Plus size={15} />
+            <Plus size={14} />
           </button>
-          <button type="button" onClick={() => remove(item.id)} aria-label="Remove item">
-            <Trash2 size={15} />
+          <button type="button" onClick={() => remove(item.id)} aria-label="Remove item" style={{ marginLeft: 4 }}>
+            <Trash2 size={14} />
           </button>
         </div>
       </div>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0f12"/><stop offset="1" stop-color="#080406"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%"><stop offset="0" stop-color="#e9a8b5" stop-opacity=".28"/><stop offset="1" stop-color="#e9a8b5" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wrap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1d22"/><stop offset="1" stop-color="#1a0a0e"/></linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c08a3a"/><stop offset=".5" stop-color="#f1d187"/><stop offset="1" stop-color="#c08a3a"/></linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+  <g transform="translate(400 700)">
+    <ellipse cx="0" cy="120" rx="260" ry="30" fill="#000" opacity=".5"/>
+    <path d="M -240 0 Q -260 80 -180 100 L 180 100 Q 260 80 240 0 Z" fill="url(#wrap)"/>
+    <ellipse cx="0" cy="0" rx="240" ry="60" fill="#2a1418"/>
+    <g>
+      <g transform="translate(-130 -20)">
+        <ellipse cx="0" cy="0" rx="40" ry="55" fill="#d97a8a"/>
+        <path d="M -40 0 Q -10 -30 40 0" fill="none" stroke="#f5cdd4" stroke-width="3" opacity=".6"/>
+      </g>
+      <g transform="translate(-60 -10)">
+        <ellipse cx="0" cy="0" rx="45" ry="60" fill="#c46171"/>
+        <path d="M -45 0 Q -10 -32 45 0" fill="none" stroke="#f5cdd4" stroke-width="3" opacity=".6"/>
+      </g>
+      <g transform="translate(10 -15)">
+        <ellipse cx="0" cy="0" rx="48" ry="65" fill="#e0879a"/>
+        <path d="M -48 0 Q -10 -34 48 0" fill="none" stroke="#f5cdd4" stroke-width="3" opacity=".6"/>
+      </g>
+      <g transform="translate(80 -10)">
+        <ellipse cx="0" cy="0" rx="45" ry="60" fill="#c46171"/>
+        <path d="M -45 0 Q -10 -32 45 0" fill="none" stroke="#f5cdd4" stroke-width="3" opacity=".6"/>
+      </g>
+      <g transform="translate(150 -20)">
+        <ellipse cx="0" cy="0" rx="38" ry="52" fill="#d97a8a"/>
+        <path d="M -38 0 Q -10 -30 38 0" fill="none" stroke="#f5cdd4" stroke-width="3" opacity=".6"/>
+      </g>
+    </g>
+    <rect x="-8" y="-30" width="16" height="130" fill="url(#ribbon)"/>
+    <g transform="translate(0 -40)">
+      <path d="M 0 0 C -30 -50 -100 -40 -80 0 C -50 25 0 25 0 25 C 0 25 50 25 80 0 C 100 -40 30 -50 0 0 Z" fill="url(#ribbon)"/>
+      <circle r="10" fill="#1a0a0e" stroke="url(#ribbon)" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

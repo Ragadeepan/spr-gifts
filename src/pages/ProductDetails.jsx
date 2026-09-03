@@ -13,7 +13,7 @@ export function ProductDetails() {
   const { slug } = useParams();
   const product = getProductBySlug(slug);
   const [quantity, setQuantity] = useState(1);
-  const [activeImage, setActiveImage] = useState(product?.images?.[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
   const { addToCart } = useCart();
   const category = product ? getCategoryById(product.category) : null;
 
@@ -32,7 +32,7 @@ export function ProductDetails() {
       return;
     }
 
-    setActiveImage(product.images?.[0] || siteConfig.productPlaceholder);
+    setActiveIndex(0);
     setSeo({
       title: `${product.name} | ${siteConfig.brandName}`,
       description: product.shortDescription,
@@ -54,6 +54,7 @@ export function ProductDetails() {
   if (!product) {
     return (
       <section className="page section center-page">
+        <p className="eyebrow">404</p>
         <h1>Product not found</h1>
         <p>This gift may have been moved or removed.</p>
         <Link className="gold-button" to="/shop">
@@ -63,42 +64,78 @@ export function ProductDetails() {
     );
   }
 
+  const images = product.images?.length ? product.images : [siteConfig.productPlaceholder];
+  const activeImage = images[activeIndex] || siteConfig.productPlaceholder;
+
+  const handlePrev = () => setActiveIndex((i) => (i - 1 + images.length) % images.length);
+  const handleNext = () => setActiveIndex((i) => (i + 1) % images.length);
+
   return (
     <section className="page section product-detail">
       <div className="gallery">
-        <img
-          className="main-product-image"
-          src={activeImage || siteConfig.productPlaceholder}
-          alt={product.name}
-          width="900"
-          height="1100"
-          onError={(event) => {
-            event.currentTarget.src = siteConfig.productPlaceholder;
-          }}
-        />
-        {product.images?.length > 1 && (
+        <div className="main-product-image-wrap">
+          <img
+            className="main-product-image"
+            src={activeImage}
+            alt={product.name}
+            width="900"
+            height="1100"
+            onError={(event) => {
+              event.currentTarget.src = siteConfig.productPlaceholder;
+            }}
+          />
+          {images.length > 1 && (
+            <div className="gallery-dots" role="tablist" aria-label="Image gallery">
+              {images.map((image, idx) => (
+                <button
+                  key={image + idx}
+                  type="button"
+                  className={idx === activeIndex ? "active" : ""}
+                  onClick={() => setActiveIndex(idx)}
+                  aria-label={`Show image ${idx + 1}`}
+                  aria-selected={idx === activeIndex}
+                  role="tab"
+                />
+              ))}
+            </div>
+          )}
+          {product.badge && <span className="product-badge" style={{ left: 14, right: "auto" }}>{product.badge}</span>}
+        </div>
+        {images.length > 1 && (
           <div className="thumb-row">
-            {product.images.map((image) => (
-              <button key={image} type="button" onClick={() => setActiveImage(image)} aria-label={`View image for ${product.name}`}>
+            {images.map((image, idx) => (
+              <button
+                key={image + idx}
+                type="button"
+                className={idx === activeIndex ? "active" : ""}
+                onClick={() => setActiveIndex(idx)}
+                aria-label={`View image ${idx + 1} for ${product.name}`}
+              >
                 <img src={image} alt="" loading="lazy" />
               </button>
             ))}
           </div>
         )}
+        <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 6 }}>
+          <button className="outline-button" type="button" onClick={handlePrev} aria-label="Previous image" style={{ minWidth: 44, padding: "0 14px" }}>‹</button>
+          <button className="outline-button" type="button" onClick={handleNext} aria-label="Next image" style={{ minWidth: 44, padding: "0 14px" }}>›</button>
+        </div>
       </div>
 
       <article className="product-info">
-        <Link to={`/shop?category=${category?.slug || ""}`}>{category?.name}</Link>
+        <Link to={`/shop?category=${category?.slug || ""}`} className="detail-eyebrow" style={{ display: "inline-block", margin: 0 }}>
+          {category?.name}
+        </Link>
         <h1>{product.name}</h1>
         <p>{product.shortDescription}</p>
         <div className="price-row detail">
           <strong>{formatPrice(product.price)}</strong>
           {product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
         </div>
-        <span className={product.available ? "available" : "unavailable"}>
-          {product.available ? "Available" : "Currently unavailable"}
+        <span className={product.available ? "available" : "unavailable"} style={{ marginBottom: 14 }}>
+          {product.available ? "● Available" : "● Currently unavailable"}
         </span>
-        <p>{product.description}</p>
+        <p style={{ color: "var(--text-soft)", lineHeight: 1.7 }}>{product.description}</p>
         <div className="tags">
           {product.tags?.map((tag) => (
             <span key={tag}>{tag}</span>
@@ -127,7 +164,14 @@ export function ProductDetails() {
       {product.video && (
         <section className="video-section">
           <h2>Product Video</h2>
-          <video src={product.video} muted controls preload="metadata" />
+          <video
+            src={product.video}
+            muted
+            controls
+            preload="metadata"
+            poster={product.images?.[0] || siteConfig.productPlaceholder}
+            playsInline
+          />
         </section>
       )}
     </section>

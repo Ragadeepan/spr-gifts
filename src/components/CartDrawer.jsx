@@ -22,7 +22,10 @@ export function CartDrawer() {
         </div>
 
         {items.length === 0 ? (
-          <div className="empty-state">Your cart is empty. Add a gift to request it on WhatsApp.</div>
+          <div className="empty-state">
+            Your cart is empty.
+            <br />Add a gift to request it on WhatsApp.
+          </div>
         ) : (
           <>
             <div className="cart-list">

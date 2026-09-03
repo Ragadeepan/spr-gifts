@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0f12"/><stop offset="1" stop-color="#080406"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%"><stop offset="0" stop-color="#f5cdd4" stop-opacity=".22"/><stop offset="1" stop-color="#f5cdd4" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wrap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1d22"/><stop offset="1" stop-color="#1a0a0e"/></linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c08a3a"/><stop offset=".5" stop-color="#f1d187"/><stop offset="1" stop-color="#c08a3a"/></linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+  <g transform="translate(400 700)">
+    <ellipse cx="0" cy="120" rx="260" ry="28" fill="#000" opacity=".5"/>
+    <path d="M -230 0 Q -250 75 -170 95 L 170 95 Q 250 75 230 0 Z" fill="url(#wrap)"/>
+    <ellipse cx="0" cy="0" rx="230" ry="55" fill="#2a1418"/>
+    <g transform="translate(0 -10)">
+      <rect x="-90" y="-90" width="180" height="180" rx="10" fill="#1a0a0e" stroke="url(#ribbon)" stroke-width="3"/>
+      <rect x="-75" y="-75" width="150" height="150" rx="6" fill="#fff" opacity=".06"/>
+      <text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="url(#ribbon)" font-style="italic">You</text>
+      <text x="0" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f5cdd4" opacity=".7">&amp; Me</text>
+    </g>
+    <rect x="-8" y="-30" width="16" height="125" fill="url(#ribbon)"/>
+    <g transform="translate(0 -40)">
+      <path d="M 0 0 C -30 -50 -100 -40 -80 0 C -50 25 0 25 0 25 C 0 25 50 25 80 0 C 100 -40 30 -50 0 0 Z" fill="url(#ribbon)"/>
+      <circle r="10" fill="#1a0a0e" stroke="url(#ribbon)" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

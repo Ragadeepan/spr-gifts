@@ -10,10 +10,12 @@ export const products = [
     shortDescription: "A premium custom gift box with personal message styling.",
     description:
       "A thoughtfully arranged custom gift box for birthdays, anniversaries and meaningful surprises. Replace the placeholder images with your actual product photos when ready.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/personalized-memory-gift-box.svg"],
     video: null,
     featured: true,
     available: true,
+    badge: "Best Seller",
+    sortOrder: 1,
     createdAt: "2026-09-01",
     updatedAt: "2026-09-01",
     tags: ["customized", "personalized", "gift box", "birthday"],
@@ -29,10 +31,12 @@ export const products = [
     shortDescription: "A personal gift concept centered on name or initials.",
     description:
       "A simple personalized gift option for names, initials or short messages. Final style and availability are confirmed through WhatsApp.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/name-initial-custom-gift.svg"],
     video: null,
     featured: false,
     available: true,
+    badge: "New",
+    sortOrder: 2,
     createdAt: "2026-08-28",
     updatedAt: "2026-08-28",
     tags: ["custom", "name", "initial", "personalized"],
@@ -48,10 +52,12 @@ export const products = [
     shortDescription: "Gift-ready earrings box with a premium rose-gold feel.",
     description:
       "An elegant earrings gift box arranged for a polished gifting moment. Replace placeholder images with the exact earring styles you sell.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/rose-gold-earrings-gift-box.svg"],
     video: null,
     featured: true,
     available: true,
+    badge: "Popular",
+    sortOrder: 3,
     createdAt: "2026-08-26",
     updatedAt: "2026-08-26",
     tags: ["earrings", "gift box", "jewellery", "rose gold"],
@@ -67,10 +73,12 @@ export const products = [
     shortDescription: "A compact jewellery gift box for small surprises.",
     description:
       "A compact earrings gift box suitable for thoughtful gifting. Product details can be updated anytime from products.js.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/mini-earrings-surprise-box.svg"],
     video: null,
     featured: false,
     available: true,
+    badge: "",
+    sortOrder: 4,
     createdAt: "2026-08-25",
     updatedAt: "2026-08-25",
     tags: ["earrings", "compact gift", "jewellery"],
@@ -86,10 +94,12 @@ export const products = [
     shortDescription: "A fuller gift box presentation for special occasions.",
     description:
       "A premium 16-piece gifting concept with a rich, curated presentation. Final inclusions can be adjusted later in product data.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/premium-16-piece-gift-box.svg"],
     video: null,
     featured: true,
     available: true,
+    badge: "Best Seller",
+    sortOrder: 5,
     createdAt: "2026-08-24",
     updatedAt: "2026-08-24",
     tags: ["16 piece", "gift box", "premium", "occasion"],
@@ -105,10 +115,12 @@ export const products = [
     shortDescription: "A celebration-ready box for birthdays and surprises.",
     description:
       "A special occasion gift box that can be customized with your theme, message and preferred color direction.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/celebration-16-piece-gift-box.svg"],
     video: null,
     featured: false,
     available: true,
+    badge: "New",
+    sortOrder: 6,
     createdAt: "2026-08-22",
     updatedAt: "2026-08-22",
     tags: ["birthday", "celebration", "16 piece", "gift set"],
@@ -124,10 +136,12 @@ export const products = [
     shortDescription: "Premium handmade pink rose bouquet.",
     description:
       "A beautiful premium bouquet suitable for birthdays, anniversaries and special occasions.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/pink-rose-bouquet.svg"],
     video: null,
     featured: true,
     available: true,
+    badge: "Popular",
+    sortOrder: 7,
     createdAt: "2026-08-20",
     updatedAt: "2026-08-20",
     tags: ["bouquet", "gift", "birthday", "rose"],
@@ -143,10 +157,12 @@ export const products = [
     shortDescription: "A timeless bouquet for warm special moments.",
     description:
       "A classic flower bouquet presentation designed for gifting. Replace with real product photos before launch.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/classic-flower-bouquet.svg"],
     video: null,
     featured: false,
     available: true,
+    badge: "",
+    sortOrder: 8,
     createdAt: "2026-08-18",
     updatedAt: "2026-08-18",
     tags: ["flower", "bouquet", "anniversary", "gift"],
@@ -162,10 +178,12 @@ export const products = [
     shortDescription: "A bouquet crafted around your preferred theme.",
     description:
       "A custom bouquet planned around your color palette, occasion and personal message. Confirm design details on WhatsApp.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/custom-theme-bouquet.svg"],
     video: null,
     featured: true,
     available: true,
+    badge: "Best Seller",
+    sortOrder: 9,
     createdAt: "2026-08-16",
     updatedAt: "2026-08-16",
     tags: ["custom bouquet", "personalized", "theme", "gift"],
@@ -181,10 +199,12 @@ export const products = [
     shortDescription: "A custom bouquet concept with a personal message.",
     description:
       "A personalized bouquet idea for special messages, photos or themed gifting requests.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/photo-message-bouquet.svg"],
     video: null,
     featured: false,
     available: false,
+    badge: "Coming Soon",
+    sortOrder: 10,
     createdAt: "2026-08-15",
     updatedAt: "2026-08-15",
     tags: ["photo", "message", "customized bouquet", "coming soon"],
@@ -200,10 +220,12 @@ export const products = [
     shortDescription: "A sweet premium bouquet for chocolate lovers.",
     description:
       "A premium chocolate bouquet arranged for birthdays, friendship surprises and celebration gifting.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/premium-chocolate-bouquet.svg"],
     video: null,
     featured: true,
     available: true,
+    badge: "Popular",
+    sortOrder: 11,
     createdAt: "2026-08-14",
     updatedAt: "2026-08-14",
     tags: ["chocolate", "bouquet", "sweet gift", "birthday"],
@@ -219,10 +241,12 @@ export const products = [
     shortDescription: "A compact chocolate bouquet for small surprises.",
     description:
       "A compact chocolate bouquet option with premium wrapping and a gift-ready look.",
-    images: ["/images/products/product-placeholder.svg"],
+    images: ["/images/products/mini-chocolate-bouquet.svg"],
     video: null,
     featured: false,
     available: true,
+    badge: "",
+    sortOrder: 12,
     createdAt: "2026-08-12",
     updatedAt: "2026-08-12",
     tags: ["chocolate", "mini bouquet", "gift", "surprise"],
@@ -234,3 +258,12 @@ export const getProductBySlug = (slug) =>
 
 export const getProductsByCategory = (categoryId) =>
   products.filter((product) => product.category === categoryId);
+
+export const getFeaturedProducts = () =>
+  products.filter((product) => product.featured);
+
+export const getNewArrivals = () =>
+  products.filter((product) => product.badge === "New");
+
+export const getBestSellers = () =>
+  products.filter((product) => product.badge === "Best Seller");

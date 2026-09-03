@@ -1,8 +1,11 @@
 export const siteConfig = {
   brandName: "SPR GIFTS.IN",
+  brandShort: "SPR GIFTS",
   tagline: "Special Gifts. Personalized Moments.",
+  headline: "Make Every Moment Extraordinary.",
+  subheadline: "Premium Gifts • Personalized Moments • Beautiful Memories",
   description:
-    "Premium gifts, beautiful bouquets and personalized surprises made for every special moment.",
+    "Premium gifts, beautiful bouquets and personalized surprises made for every special moment. Order from SPR GIFTS.IN through WhatsApp.",
   whatsappNumber: "919600849306",
   whatsappDisplayNumber: "9600849306",
   instagramUrl: "https://www.instagram.com/spr_gifts.in/",
@@ -11,6 +14,18 @@ export const siteConfig = {
   currencySymbol: "₹",
   canonicalUrl: "https://www.sprgifts.in",
   logo: "/logo/spr-gifts-logo.png",
+  heroImage: "/images/hero/luxury-gift-hero.svg",
   productPlaceholder: "/images/products/product-placeholder.svg",
   categoryPlaceholder: "/images/categories/category-placeholder.svg",
+  theme: {
+    black: "#0a0604",
+    ink: "#1a1208",
+    cream: "#fffaf2",
+    ivory: "#f5ecd9",
+    gold: "#d4af63",
+    goldLight: "#f1d187",
+    goldDark: "#8d641e",
+    rose: "#d8a094",
+    muted: "#b89b7a",
+  },
 };

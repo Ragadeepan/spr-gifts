@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1208"/><stop offset="1" stop-color="#0a0604"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%"><stop offset="0" stop-color="#e9c66f" stop-opacity=".26"/><stop offset="1" stop-color="#e9c66f" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wrap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1c10"/><stop offset="1" stop-color="#120a05"/></linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c08a3a"/><stop offset=".5" stop-color="#f1d187"/><stop offset="1" stop-color="#c08a3a"/></linearGradient>
+    <radialGradient id="rose" cx="40%" cy="40%" r="60%"><stop offset="0" stop-color="#f5cdd4"/><stop offset=".4" stop-color="#e0879a"/><stop offset="1" stop-color="#7a3845"/></radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+  <g transform="translate(400 700)">
+    <ellipse cx="0" cy="120" rx="270" ry="30" fill="#000" opacity=".5"/>
+    <path d="M -240 0 Q -260 80 -180 100 L 180 100 Q 260 80 240 0 Z" fill="url(#wrap)"/>
+    <ellipse cx="0" cy="0" rx="240" ry="60" fill="#1f1208"/>
+    <g>
+      <g transform="translate(-130 -15)">
+        <circle r="45" fill="url(#rose)"/>
+        <g stroke="#7a3845" stroke-width="1.5" fill="none">
+          <path d="M -28 -10 Q 0 -20 28 -10"/>
+          <path d="M -25 0 Q 0 -10 25 0"/>
+          <path d="M -22 10 Q 0 0 22 10"/>
+        </g>
+      </g>
+      <g transform="translate(-55 -25)">
+        <circle r="50" fill="url(#rose)"/>
+        <g stroke="#7a3845" stroke-width="1.5" fill="none">
+          <path d="M -32 -12 Q 0 -22 32 -12"/>
+          <path d="M -28 0 Q 0 -12 28 0"/>
+          <path d="M -25 12 Q 0 0 25 12"/>
+        </g>
+      </g>
+      <g transform="translate(25 -30)">
+        <circle r="55" fill="url(#rose)"/>
+        <g stroke="#7a3845" stroke-width="1.5" fill="none">
+          <path d="M -36 -14 Q 0 -24 36 -14"/>
+          <path d="M -32 0 Q 0 -14 32 0"/>
+          <path d="M -28 14 Q 0 0 28 14"/>
+        </g>
+      </g>
+      <g transform="translate(100 -25)">
+        <circle r="48" fill="url(#rose)"/>
+        <g stroke="#7a3845" stroke-width="1.5" fill="none">
+          <path d="M -30 -12 Q 0 -22 30 -12"/>
+          <path d="M -26 0 Q 0 -12 26 0"/>
+          <path d="M -22 12 Q 0 0 22 12"/>
+        </g>
+      </g>
+      <g transform="translate(170 -15)">
+        <circle r="42" fill="url(#rose)"/>
+        <g stroke="#7a3845" stroke-width="1.5" fill="none">
+          <path d="M -26 -10 Q 0 -20 26 -10"/>
+          <path d="M -22 0 Q 0 -10 22 0"/>
+          <path d="M -20 10 Q 0 0 20 10"/>
+        </g>
+      </g>
+    </g>
+    <rect x="-8" y="-30" width="16" height="130" fill="url(#ribbon)"/>
+    <g transform="translate(0 -40)">
+      <path d="M 0 0 C -30 -50 -100 -40 -80 0 C -50 25 0 25 0 25 C 0 25 50 25 80 0 C 100 -40 30 -50 0 0 Z" fill="url(#ribbon)"/>
+      <circle r="10" fill="#1a1208" stroke="url(#ribbon)" stroke-width="4"/>
+    </g>
+  </g>
+</svg>
