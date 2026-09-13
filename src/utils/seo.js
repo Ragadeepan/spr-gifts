@@ -1,8 +1,8 @@
 import { siteConfig } from "../data/siteConfig";
 
 export function setSeo({
-  title = "SPR GIFTS.IN | Premium Gifts, Bouquets & Personalized Gifts",
-  description = "Shop premium gifts, personalized gifts, flower bouquets, chocolate bouquets, earrings gift boxes and special gift sets from SPR GIFTS.IN.",
+  title = "SPR GIFTS.IN | Jhumki Gift Sets & Flower Bouquets | Pan India Delivery",
+  description = "SPR GIFTS.IN offers premium 12-pair & 16-pair Jhumki gift sets and beautiful flower bouquets. Opening offer prices available. Order via WhatsApp with Pan India delivery.",
   image = siteConfig.logo,
   path = "/",
   type = "website",
@@ -69,15 +69,24 @@ export function productJsonLd(product, categoryName) {
       "@type": "Brand",
       name: siteConfig.brandName,
     },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: product.currency || siteConfig.currency,
-      price: product.price,
-      availability: product.available
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      url: absoluteUrl(`/product/${product.slug}`),
-    },
+    offers: product.price !== null && product.price !== undefined
+      ? {
+          "@type": "Offer",
+          priceCurrency: product.currency || siteConfig.currency,
+          price: product.price,
+          availability: product.available
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          url: absoluteUrl(`/product/${product.slug}`),
+        }
+      : {
+          "@type": "Offer",
+          priceCurrency: product.currency || siteConfig.currency,
+          availability: product.available
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          url: absoluteUrl(`/product/${product.slug}`),
+        },
   };
 }
 

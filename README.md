@@ -92,8 +92,8 @@ src/data/siteConfig.js
 Change:
 
 ```js
-whatsappNumber: "919600849307",
-whatsappDisplayNumber: "9600849307",
+whatsappNumber: "919363797846",
+whatsappDisplayNumber: "93637 97846",
 ```
 
 `whatsappNumber` is used for WhatsApp links. Keep country code and no `+`.
@@ -109,8 +109,8 @@ src/data/siteConfig.js
 Change:
 
 ```js
-instagramUrl: "https://www.instagram.com/spr_gifts.in/",
-instagramHandle: "@spr_gifts.in",
+instagramUrl: "https://www.instagram.com/sprgifts.in/",
+instagramHandle: "@sprgifts.in",
 ```
 
 ## Change Brand Name
@@ -119,7 +119,7 @@ Open `src/data/siteConfig.js` and change:
 
 ```js
 brandName: "SPR GIFTS.IN",
-tagline: "Special Gifts. Personalized Moments.",
+tagline: "Unique & Personalized Gifts 🎁",
 ```
 
 ## Change Logo

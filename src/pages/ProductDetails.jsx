@@ -83,6 +83,8 @@ export function ProductDetails() {
     else handleNext();
   };
 
+  const hasPrice = product.price !== null && product.price !== undefined;
+
   return (
     <section className="page section product-detail">
       <div className="gallery">
@@ -152,8 +154,14 @@ export function ProductDetails() {
         <h1>{product.name}</h1>
         <p>{product.shortDescription}</p>
         <div className="price-row detail">
-          <strong>{formatPrice(product.price)}</strong>
-          {product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
+          {hasPrice ? (
+            <>
+              <strong>{formatPrice(product.price)}</strong>
+              {product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
+            </>
+          ) : (
+            <strong style={{ color: "var(--gold-light)" }}>DM for Price</strong>
+          )}
         </div>
         <span className={product.available ? "available" : "unavailable"} style={{ marginBottom: 14 }}>
           {product.available ? "● Available" : "● Currently unavailable"}
@@ -164,22 +172,26 @@ export function ProductDetails() {
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        <div className="quantity-row large">
-          <button type="button" onClick={() => setQuantity((value) => Math.max(1, value - 1))} aria-label="Decrease quantity">
-            <Minus size={16} />
-          </button>
-          <span>{quantity}</span>
-          <button type="button" onClick={() => setQuantity((value) => value + 1)} aria-label="Increase quantity">
-            <Plus size={16} />
-          </button>
-        </div>
+        {hasPrice && (
+          <div className="quantity-row large">
+            <button type="button" onClick={() => setQuantity((value) => Math.max(1, value - 1))} aria-label="Decrease quantity">
+              <Minus size={16} />
+            </button>
+            <span>{quantity}</span>
+            <button type="button" onClick={() => setQuantity((value) => value + 1)} aria-label="Increase quantity">
+              <Plus size={16} />
+            </button>
+          </div>
+        )}
         <div className="detail-actions">
-          <button className="gold-button" type="button" disabled={!product.available} onClick={() => addToCart(product, quantity)}>
-            <ShoppingBag size={18} />
-            Add to Cart
-          </button>
+          {hasPrice && (
+            <button className="gold-button" type="button" disabled={!product.available} onClick={() => addToCart(product, quantity)}>
+              <ShoppingBag size={18} />
+              Add to Cart
+            </button>
+          )}
           <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl)} target="_blank" rel="noreferrer">
-            Order This on WhatsApp
+            Order on WhatsApp
           </a>
         </div>
       </article>

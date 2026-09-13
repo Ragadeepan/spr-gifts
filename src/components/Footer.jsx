@@ -1,4 +1,4 @@
-import { Instagram, MessageCircle } from "lucide-react";
+import { Instagram, MessageCircle, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories } from "../data/categories";
 import { siteConfig } from "../data/siteConfig";
@@ -15,7 +15,7 @@ export function Footer() {
           <h2>{siteConfig.brandName}</h2>
           <p>{siteConfig.tagline}</p>
           <p style={{ marginTop: 10, color: "var(--muted)", fontSize: "0.88rem" }}>
-            Premium gifts, customized bouquets and personalized surprises made for every special moment.
+            Earrings • Jhumki Gift Sets • Flower Bouquets
           </p>
         </div>
         <div>
@@ -36,13 +36,13 @@ export function Footer() {
         <div>
           <h3>Get in Touch</h3>
           <a href={createWhatsAppUrl()} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <MessageCircle size={15} /> WhatsApp: {siteConfig.whatsappDisplayNumber}
+            <MessageCircle size={15} /> WhatsApp: +91 {siteConfig.whatsappDisplayNumber}
           </a>
           <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Instagram size={15} /> {siteConfig.instagramHandle}
           </a>
-          <span style={{ color: "var(--muted)", marginTop: 10, fontSize: "0.84rem" }}>
-            Order requests confirmed via WhatsApp.
+          <span style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8, color: "var(--gold-light)" }}>
+            <Truck size={15} /> Pan India Delivery 🇮🇳
           </span>
         </div>
       </div>

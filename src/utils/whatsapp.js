@@ -36,17 +36,15 @@ export function createCartMessage(items, subtotal) {
 
 export function createProductMessage(product, quantity, productUrl = "") {
   const lines = [
-    `Hello ${siteConfig.brandName} \u{1F44B}`,
+    `Hi ${siteConfig.brandName} \u{1F44B}`,
     "",
-    "I'm interested in:",
+    `I'm interested in the ${product.name}.`,
     "",
-    `Product: ${product.name}`,
-    `Quantity: ${quantity}`,
+    "Please share the order details and delivery charges.",
   ];
 
   if (productUrl) lines.push(`Product URL: ${productUrl}`);
 
-  lines.push("", "Please share details and availability.", "", "Thank you \u2764\uFE0F");
   return lines.join("\n");
 }
 

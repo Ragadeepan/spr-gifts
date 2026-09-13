@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { CategorySlider } from "../components/CategorySlider";
 import { InstagramButton } from "../components/InstagramButton";
 import { ProductGrid } from "../components/ProductGrid";
-import { ProductSlider } from "../components/ProductSlider";
 import { SectionTitle } from "../components/SectionTitle";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { categories } from "../data/categories";
@@ -18,10 +17,8 @@ export function Home() {
     addJsonLd("org-jsonld", organizationJsonLd());
   }, []);
 
-  const bestSellers = products.filter((product) => product.featured).slice(0, 4);
-  const bouquets = products.filter((product) => product.category.includes("bouquet")).slice(0, 4);
-  const customGifts = products.filter((product) => product.category === "customized-gifts").slice(0, 4);
-  const homeCategories = categories.slice(0, 8);
+  const featuredProducts = products.filter((product) => product.featured);
+  const homeCategories = categories;
 
   return (
     <>
@@ -37,11 +34,11 @@ export function Home() {
             <Link className="gold-button" to="/shop">
               Explore Gifts
             </Link>
-            <WhatsAppButton className="outline-button" message={`Hello ${siteConfig.brandName}, I'd like to enquire about a personalized gift.`} />
+            <WhatsAppButton className="outline-button" message={`Hello ${siteConfig.brandName}, I'd like to enquire about a gift.`} />
           </div>
         </div>
         <div className="hero-visual reveal reveal-3" aria-label="Premium SPR Gifts brand presentation">
-          <img src={siteConfig.heroImage} alt="Premium gift bouquet presentation" />
+          <img src={siteConfig.heroImage} alt="Premium gift presentation" />
           <div>
             <span>Premium</span>
             <strong>Gift Showcase</strong>
@@ -54,37 +51,25 @@ export function Home() {
         <SectionTitle
           eyebrow="Curated Collections"
           title="Featured Categories"
-          text="Add or edit categories from one file whenever your collection grows."
+          text="Browse our exclusive collections."
         />
         <CategorySlider categories={homeCategories} title="Featured Categories" />
       </section>
 
       <section className="section">
-        <SectionTitle eyebrow="Customer Favourites" title="Best Sellers" />
-        <ProductSlider products={bestSellers} title="Best Sellers" />
-      </section>
-
-      <section className="section split-band">
-        <div>
-          <SectionTitle eyebrow="Bouquet Studio" title="Featured Bouquets" text="Hand-arranged bouquets and personalized surprises for every occasion." />
-          <ProductGrid products={bouquets} />
-        </div>
-      </section>
-
-      <section className="section">
-        <SectionTitle eyebrow="Personal Touch" title="Customized Gifts" text="Make it yours with names, initials, themes and personal messages." />
-        <ProductGrid products={customGifts} />
+        <SectionTitle eyebrow="Available Now" title="Featured Products" />
+        <ProductGrid products={featuredProducts} />
       </section>
 
       <section className="section">
         <SectionTitle eyebrow="The SPR Promise" title={`Why Choose ${siteConfig.brandShort}`} />
         <div className="trust-grid">
           {[
-            [Palette, "Personalized Options", "Custom colors, names, themes and messages can be discussed."],
-            [PackageCheck, "Carefully Packed", "Products are planned for a gift-ready first impression."],
+            [Sparkles, "Opening Offer Prices", "Special launch pricing on Jhumki Gift Sets."],
+            [PackageCheck, "Premium Packaging", "Every set comes in an elegant gift box."],
             [MessageCircle, "Easy WhatsApp Ordering", "Ask questions and confirm details directly before ordering."],
-            [Gift, "Special Occasion Gifts", "Ideas for birthdays, anniversaries and meaningful moments."],
-            [Sparkles, "Custom Gift Requests", "Share your idea and get suitable options through WhatsApp."],
+            [Gift, "Perfect for Gifting", "Birthdays, anniversaries, festivals and special moments."],
+            [Palette, "Pan India Delivery", "We deliver across India 🇮🇳"],
           ].map(([Icon, title, text]) => (
             <article className="trust-card reveal" key={title}>
               <Icon size={24} />
@@ -114,18 +99,18 @@ export function Home() {
 
       <section className="instagram-section">
         <div>
-          <p className="eyebrow">Instagram Preview</p>
-          <h2>Follow new gift styles and bouquet ideas.</h2>
-          <p>See our latest gifts, bouquets and creations on Instagram.</p>
+          <p className="eyebrow">Instagram</p>
+          <h2>Follow @sprgifts.in for latest designs.</h2>
+          <p>See our latest Jhumki gift sets, flower bouquets and creations on Instagram.</p>
         </div>
         <InstagramButton />
       </section>
 
       <section className="cta-band">
-        <p className="eyebrow" style={{ color: "var(--gold-light)" }}>Personalized Gifting</p>
-        <h2>Need a personalized gift idea?</h2>
-        <p>Send your occasion, preferred style and budget. {siteConfig.brandShort} will help you confirm details on WhatsApp.</p>
-        <WhatsAppButton message={`Hello ${siteConfig.brandName}, I'd love a personalized gift recommendation. My occasion/budget is: `} />
+        <p className="eyebrow" style={{ color: "var(--gold-light)" }}>Order via WhatsApp</p>
+        <h2>Ready to order?</h2>
+        <p>Send us a message on WhatsApp with the product name. We'll share details and delivery charges.</p>
+        <WhatsAppButton message={`Hello ${siteConfig.brandName}, I'd like to place an order.`} />
       </section>
     </>
   );

@@ -11,16 +11,13 @@ export function Shop() {
   const [params, setParams] = useSearchParams();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(params.get("category") || "all");
-  const [price, setPrice] = useState("all");
   const [availability, setAvailability] = useState("all");
-  const [featured, setFeatured] = useState(false);
-  const [sort, setSort] = useState("featured");
   const [mobileFilters, setMobileFilters] = useState(false);
 
   useEffect(() => {
     setSeo({
-      title: "Shop Gifts | SPR GIFTS.IN",
-      description: "Browse premium customized gifts, bouquets, chocolate bouquets and gift boxes from SPR GIFTS.IN.",
+      title: "Shop Jhumki Gift Sets & Flower Bouquets | SPR GIFTS.IN",
+      description: "Browse premium 12-pair & 16-pair Jhumki gift sets and flower bouquets from SPR GIFTS.IN. Order via WhatsApp with Pan India delivery.",
       path: "/shop",
     });
   }, []);
@@ -46,26 +43,15 @@ export function Shop() {
 
         const matchesSearch = !term || haystack.includes(term);
         const matchesCategory = category === "all" || product.category === selectedCategory?.id;
-        const matchesPrice =
-          price === "all" ||
-          (price === "under-700" && product.price <= 700) ||
-          (price === "700-1000" && product.price > 700 && product.price <= 1000) ||
-          (price === "above-1000" && product.price > 1000);
         const matchesAvailability =
           availability === "all" ||
           (availability === "available" && product.available) ||
           (availability === "unavailable" && !product.available);
-        const matchesFeatured = !featured || product.featured;
 
-        return matchesSearch && matchesCategory && matchesPrice && matchesAvailability && matchesFeatured;
+        return matchesSearch && matchesCategory && matchesAvailability;
       })
-      .sort((a, b) => {
-        if (sort === "price-low") return a.price - b.price;
-        if (sort === "price-high") return b.price - a.price;
-        if (sort === "newest") return new Date(b.createdAt) - new Date(a.createdAt);
-        return Number(b.featured) - Number(a.featured);
-      });
-  }, [search, category, price, availability, featured, sort]);
+      .sort((a, b) => a.sortOrder - b.sortOrder);
+  }, [search, category, availability]);
 
   const updateCategory = (value) => {
     setCategory(value);
@@ -77,22 +63,16 @@ export function Shop() {
       <SectionTitle
         eyebrow="Shop"
         title="Premium Gift Collection"
-        text="Search, filter and add gifts to cart. Final order details are confirmed on WhatsApp."
+        text="Browse Jhumki Gift Sets and Flower Bouquets. Order via WhatsApp."
       />
       <div className="shop-toolbar">
         <input
           type="search"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search bouquets, earrings, gift boxes…"
+          placeholder="Search Jhumki sets, flower bouquets…"
           aria-label="Search products"
         />
-        <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort products">
-          <option value="featured">Featured</option>
-          <option value="price-low">Price low to high</option>
-          <option value="price-high">Price high to low</option>
-          <option value="newest">Newest</option>
-        </select>
         <button className="filter-toggle" type="button" onClick={() => setMobileFilters(true)}>
           <SlidersHorizontal size={18} />
           Filters
@@ -103,12 +83,8 @@ export function Shop() {
         <Filters
           category={category}
           updateCategory={updateCategory}
-          price={price}
-          setPrice={setPrice}
           availability={availability}
           setAvailability={setAvailability}
-          featured={featured}
-          setFeatured={setFeatured}
         />
         <ProductGrid products={visibleProducts} emptyText="No gifts match your search or filters." />
       </div>
@@ -121,12 +97,8 @@ export function Shop() {
           <Filters
             category={category}
             updateCategory={updateCategory}
-            price={price}
-            setPrice={setPrice}
             availability={availability}
             setAvailability={setAvailability}
-            featured={featured}
-            setFeatured={setFeatured}
           />
         </div>
       </div>
@@ -134,7 +106,7 @@ export function Shop() {
   );
 }
 
-function Filters({ category, updateCategory, price, setPrice, availability, setAvailability, featured, setFeatured }) {
+function Filters({ category, updateCategory, availability, setAvailability }) {
   return (
     <aside className="filters" aria-label="Product filters">
       <h2>Filters</h2>
@@ -150,25 +122,12 @@ function Filters({ category, updateCategory, price, setPrice, availability, setA
         </select>
       </label>
       <label>
-        Price
-        <select value={price} onChange={(event) => setPrice(event.target.value)}>
-          <option value="all">All prices</option>
-          <option value="under-700">₹700 and under</option>
-          <option value="700-1000">₹701 to ₹1,000</option>
-          <option value="above-1000">Above ₹1,000</option>
-        </select>
-      </label>
-      <label>
         Availability
         <select value={availability} onChange={(event) => setAvailability(event.target.value)}>
           <option value="all">All</option>
           <option value="available">Available</option>
           <option value="unavailable">Out of stock</option>
         </select>
-      </label>
-      <label className="check-row">
-        <input type="checkbox" checked={featured} onChange={(event) => setFeatured(event.target.checked)} />
-        Featured only
       </label>
     </aside>
   );
