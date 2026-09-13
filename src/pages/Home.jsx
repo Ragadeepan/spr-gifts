@@ -1,9 +1,9 @@
 import { Gift, MessageCircle, PackageCheck, Palette, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CategorySlider } from "../components/CategorySlider";
+import { GiftShowcase } from "../components/GiftShowcase";
 import { InstagramButton } from "../components/InstagramButton";
 import { ProductGrid } from "../components/ProductGrid";
-import { ProductSlider } from "../components/ProductSlider";
 import { SectionTitle } from "../components/SectionTitle";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { categories } from "../data/categories";
@@ -39,26 +39,12 @@ export function Home() {
           </div>
         </div>
         <div className="hero-visual reveal reveal-3" aria-label="Premium SPR Gifts brand presentation">
-          <img src={siteConfig.heroImage} alt="Premium gift presentation" />
-          <div>
-            <span>Premium</span>
-            <strong>Gift Showcase</strong>
-            <p>Beautifully curated gifts and personalized surprises. Final order is confirmed through WhatsApp.</p>
-          </div>
+          <GiftShowcase />
         </div>
       </section>
 
       <section className="section">
-        <SectionTitle
-          eyebrow="Curated Collections"
-          title="Featured Categories"
-          text="Browse our exclusive collections."
-        />
         <CategorySlider categories={homeCategories} title="Featured Categories" />
-      </section>
-
-      <section className="section">
-        <ProductSlider products={featuredProducts} title="Featured Products" />
       </section>
 
       <section className="section">

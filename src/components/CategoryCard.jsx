@@ -1,26 +1,44 @@
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { siteConfig } from "../data/siteConfig";
+import { products } from "../data/products";
 
-export function CategoryCard({ category, compact = false }) {
+function getCategoryImage(categoryId) {
+  const product = products.find(p => p.category === categoryId);
+  return product?.images?.[0] || siteConfig.categoryPlaceholder;
+}
+
+function getCategoryDescription(categoryId) {
+  const descriptions = {
+    "jhumki-gift-sets": "Premium jhumki earring gift sets — 12-pair and 16-pair collections.",
+    "flower-bouquets": "Beautiful decorative flower bouquets for every special occasion.",
+  };
+  return descriptions[categoryId] || "";
+}
+
+export function CategoryCard({ category }) {
+  const image = getCategoryImage(category.id);
+  const description = getCategoryDescription(category.id);
+
   return (
-    <Link to={`/shop?category=${category.slug}`} style={{ display: "block" }} aria-label={`Browse ${category.name}`}>
-      <article className="category-card reveal">
-        <img
-          src={category.image || siteConfig.categoryPlaceholder}
-          alt={`${category.name} — ${siteConfig.brandName}`}
-          loading="lazy"
-          decoding="async"
-          width="560"
-          height="420"
-          onError={(event) => {
-            event.currentTarget.src = siteConfig.categoryPlaceholder;
-          }}
-        />
-        <div>
-          <h3>{category.name}</h3>
-          {!compact && <p>{category.description}</p>}
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, color: "var(--gold)", fontWeight: 600, fontSize: "0.9rem" }}>
+    <Link to={`/shop?category=${category.slug}`} className="category-card-link" aria-label={`Browse ${category.name}`}>
+      <article className="category-card">
+        <div className="category-image-wrapper">
+          <img
+            src={image}
+            alt={`${category.name} — SPR GIFTS.IN`}
+            loading="lazy"
+            decoding="async"
+            width="560"
+            height="420"
+            className="category-image"
+            onError={(e) => { e.currentTarget.src = siteConfig.categoryPlaceholder; }}
+          />
+        </div>
+        <div className="category-content">
+          <h3 className="category-name">{category.name}</h3>
+          <p className="category-desc">{description}</p>
+          <span className="category-cta">
             Explore <ArrowRight size={16} />
           </span>
         </div>
