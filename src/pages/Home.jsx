@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CategorySlider } from "../components/CategorySlider";
 import { InstagramButton } from "../components/InstagramButton";
 import { ProductGrid } from "../components/ProductGrid";
+import { ProductSlider } from "../components/ProductSlider";
 import { SectionTitle } from "../components/SectionTitle";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { categories } from "../data/categories";
@@ -57,8 +58,7 @@ export function Home() {
       </section>
 
       <section className="section">
-        <SectionTitle eyebrow="Available Now" title="Featured Products" />
-        <ProductGrid products={featuredProducts} />
+        <ProductSlider products={featuredProducts} title="Featured Products" />
       </section>
 
       <section className="section">
