@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingBag } from "lucide-react";
+import { MessageCircle, Minus, Plus, ShoppingBag } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -20,7 +20,7 @@ export function ProductDetails() {
 
   const productUrl = useMemo(() => {
     if (!product) return "";
-    return `${window.location.origin}/product/${product.slug}`;
+    return `${siteConfig.canonicalUrl}/product/${product.slug}`;
   }, [product]);
 
   useEffect(() => {
@@ -160,13 +160,16 @@ export function ProductDetails() {
               {product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
             </>
           ) : (
-            <strong style={{ color: "var(--gold-light)" }}>DM for Price</strong>
+            <strong style={{ color: "var(--gold-light)" }}>{product.priceLabel || formatPrice(product.price)}</strong>
           )}
         </div>
         <span className={product.available ? "available" : "unavailable"} style={{ marginBottom: 14 }}>
           {product.available ? "● Available" : "● Currently unavailable"}
         </span>
         <p style={{ color: "var(--text-soft)", lineHeight: 1.7 }}>{product.description}</p>
+        <p className="delivery-note">
+          Delivery charge depends on your location and will be confirmed on WhatsApp before the order is finalized.
+        </p>
         <div className="tags">
           {product.tags?.map((tag) => (
             <span key={tag}>{tag}</span>
@@ -191,6 +194,7 @@ export function ProductDetails() {
             </button>
           )}
           <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl)} target="_blank" rel="noreferrer">
+            <MessageCircle size={18} />
             Order on WhatsApp
           </a>
         </div>

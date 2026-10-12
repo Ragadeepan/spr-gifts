@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "../utils/formatPrice";
 import { cartWhatsAppUrl } from "../utils/whatsapp";
@@ -25,6 +26,9 @@ export function CartDrawer() {
           <div className="empty-state">
             Your cart is empty.
             <br />Add a gift to request it on WhatsApp.
+            <Link className="gold-button full" to="/shop" onClick={closeCart}>
+              Continue Shopping
+            </Link>
           </div>
         ) : (
           <>
@@ -43,9 +47,15 @@ export function CartDrawer() {
               <span>Subtotal</span>
               <strong>{formatPrice(subtotal)}</strong>
             </div>
+            <p className="cart-delivery-note">
+              Delivery charge depends on your location and will be confirmed before the order is finalized.
+            </p>
             <a className="gold-button full" href={cartWhatsAppUrl(items, subtotal)} target="_blank" rel="noreferrer">
               Order Cart on WhatsApp
             </a>
+            <Link className="outline-button full" to="/shop" onClick={closeCart}>
+              Continue Shopping
+            </Link>
             <button className="text-button" type="button" onClick={clear}>
               Clear cart
             </button>

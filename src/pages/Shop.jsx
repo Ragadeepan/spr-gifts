@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ProductGrid } from "../components/ProductGrid";
 import { SectionTitle } from "../components/SectionTitle";
-import { categories } from "../data/categories";
+import { categories, getCategoryBySlug } from "../data/categories";
 import { products } from "../data/products";
 import { setSeo } from "../utils/seo";
 
@@ -16,8 +16,8 @@ export function Shop() {
 
   useEffect(() => {
     setSeo({
-      title: "Shop Jhumki Gift Sets & Flower Bouquets | SPR GIFTS.IN",
-      description: "Browse premium 12-pair & 16-pair Jhumki gift sets and flower bouquets from SPR GIFTS.IN. Order via WhatsApp with Pan India delivery.",
+      title: "Shop Jhumka Gift Sets & Handmade Bouquets | SPR GIFTS.IN",
+      description: "Browse premium 12-pair and 16-pair Jhumka gift sets and handmade rose bouquets from SPR GIFTS.IN. Order via WhatsApp.",
       path: "/shop",
     });
   }, []);
@@ -29,7 +29,7 @@ export function Shop() {
 
   const visibleProducts = useMemo(() => {
     const term = search.trim().toLowerCase();
-    const selectedCategory = categories.find((item) => item.slug === category);
+    const selectedCategory = getCategoryBySlug(category);
 
     return products
       .filter((product) => {
@@ -63,14 +63,14 @@ export function Shop() {
       <SectionTitle
         eyebrow="Shop"
         title="Premium Gift Collection"
-        text="Browse Jhumki Gift Sets and Flower Bouquets. Order via WhatsApp."
+        text="Browse Jhumka Gift Sets and Handmade Flower Bouquets. Order via WhatsApp."
       />
       <div className="shop-toolbar">
         <input
           type="search"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search Jhumki sets, flower bouquets…"
+          placeholder="Search Jhumka sets, rose bouquet..."
           aria-label="Search products"
         />
         <button className="filter-toggle" type="button" onClick={() => setMobileFilters(true)}>

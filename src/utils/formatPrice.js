@@ -1,7 +1,7 @@
 import { siteConfig } from "../data/siteConfig";
 
 export function formatPrice(value) {
-  if (value === null || value === undefined) return "DM for Price";
+  if (value === null || value === undefined) return "Price on request";
 
   return new Intl.NumberFormat("en-IN", {
     style: "currency",

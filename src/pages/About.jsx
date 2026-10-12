@@ -10,14 +10,14 @@ export function About() {
   useEffect(() => {
     setSeo({
       title: `About ${siteConfig.brandName} | Premium Personalized Gifts`,
-      description: `${siteConfig.brandName} is a modern gift brand focused on beautiful, personalized and memorable gifts from Tamil Nadu, India.`,
+      description: `${siteConfig.brandName} is a premium gifting brand focused on Jhumka gift sets and handmade rose bouquets.`,
       path: "/about",
     });
   }, []);
 
   return (
     <section className="page section about-page">
-      <SectionTitle eyebrow="About" title={siteConfig.brandName} text="A premium gifting brand for personalized gifts, bouquets and curated surprises — made for special moments." />
+      <SectionTitle eyebrow="About" title={siteConfig.brandName} text="A premium gifting brand for Jhumka gift sets and handmade rose bouquets, made for special moments." />
 
       <div className="content-panel" style={{ marginBottom: 28 }}>
         <p>
@@ -25,8 +25,8 @@ export function About() {
           The collection is designed for people who want gifting to feel personal, polished and thoughtful.
         </p>
         <p>
-          We curate bouquets, chocolate bouquets, earrings gift boxes, customized gifts and celebration-ready gift
-          sets — each prepared with care and presented with a premium finish.
+          We curate 12-pair and 16-pair Jhumka gift sets along with handmade rose bouquets, each presented with a
+          premium finish.
         </p>
         <p>
           This website is a showcase and order-request experience. You can browse products, add favourites to the
@@ -36,8 +36,8 @@ export function About() {
 
       <div className="trust-grid" style={{ marginBottom: 36 }}>
         {[
-          [Sparkles, "Thoughtfully Made Gifts", "Each piece is prepared with intention."],
-          [Gift, "Personalized for Your Moments", "Names, themes and messages tailored to you."],
+          [Sparkles, "Thoughtfully Made Gifts", "Each product is prepared with intention."],
+          [Gift, "Focused Collection", "Only Jhumka gift sets and handmade rose bouquets."],
           [PackageCheck, "Beautifully Packed", "Premium wrapping for a gift-ready first impression."],
           [Heart, "Made for Memories", "Gifts designed to mark what matters."],
           [Sparkles, "Modern Gifting Studio", "A boutique approach to every order."],

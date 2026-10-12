@@ -1,11 +1,11 @@
 export const siteConfig = {
   brandName: "SPR GIFTS.IN",
   brandShort: "SPR GIFTS",
-  tagline: "Unique & Personalized Gifts 🎁",
-  headline: "Unique & Personalized Gifts",
-  subheadline: "Jhumki Gift Sets • Flower Bouquets • Pan India Delivery",
+  tagline: "Premium Jhumka gift sets and handmade bouquets",
+  headline: "Premium Gifts for Special Moments",
+  subheadline: "Jhumka Gift Sets • Handmade Rose Bouquets • WhatsApp Ordering",
   description:
-    "SPR GIFTS.IN offers premium Jhumki gift sets (12-pair & 16-pair) and beautiful flower bouquets. Order via WhatsApp with Pan India delivery.",
+    "SPR GIFTS.IN offers premium Jhumka gift sets and handmade rose bouquets. Order through WhatsApp and confirm delivery charges before finalizing.",
   whatsappNumber: "919363797846",
   whatsappDisplayNumber: "93637 97846",
   instagramUrl: "https://www.instagram.com/sprgifts.in/",

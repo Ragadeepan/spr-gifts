@@ -65,10 +65,10 @@ export function Header() {
         </nav>
 
         <div className="header-actions">
-          <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" aria-label="Follow us on Instagram">
+          <a className="instagram-icon" href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" aria-label="Follow us on Instagram">
             <Instagram size={19} />
           </a>
-          <a href={createWhatsAppUrl()} target="_blank" rel="noreferrer" aria-label="Order on WhatsApp">
+          <a className="whatsapp-icon" href={createWhatsAppUrl()} target="_blank" rel="noreferrer" aria-label="Order on WhatsApp">
             <MessageCircle size={19} />
           </a>
           <button className="cart-icon" type="button" onClick={openCart} aria-label={`Open cart with ${count} items`}>

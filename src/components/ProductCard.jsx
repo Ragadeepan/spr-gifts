@@ -8,6 +8,7 @@ import { formatPrice } from "../utils/formatPrice";
 export function ProductCard({ product }) {
   const { addToCart } = useCart();
   const category = getCategoryById(product.category);
+  const hasPrice = product.price !== null && product.price !== undefined;
 
   return (
     <article className="product-card reveal">
@@ -31,23 +32,27 @@ export function ProductCard({ product }) {
         <h3>{product.name}</h3>
         <p style={{ fontSize: "0.9rem", margin: "4px 0", color: "var(--text-soft)" }}>{product.shortDescription}</p>
         <div className="price-row">
-          <strong>{formatPrice(product.price)}</strong>
-          {product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
+          <strong>{product.priceLabel || formatPrice(product.price)}</strong>
+          {hasPrice && product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
         </div>
         <span className={product.available ? "available" : "unavailable"}>
           {product.available ? "● Available" : "● Currently unavailable"}
         </span>
         <div className="card-actions">
-          <Link to={`/product/${product.slug}`}>View Details</Link>
-          <button
-            type="button"
-            onClick={() => addToCart(product)}
-            disabled={!product.available}
-            aria-label={`Add ${product.name} to cart`}
-          >
-            <ShoppingBag size={16} />
-            Add
-          </button>
+          <Link to={`/product/${product.slug}`}>View Product</Link>
+          {hasPrice ? (
+            <button
+              type="button"
+              onClick={() => addToCart(product)}
+              disabled={!product.available}
+              aria-label={`Add ${product.name} to cart`}
+            >
+              <ShoppingBag size={16} />
+              Add to Cart
+            </button>
+          ) : (
+            <Link to={`/product/${product.slug}`} className="order-link">Order on WhatsApp</Link>
+          )}
         </div>
       </div>
     </article>

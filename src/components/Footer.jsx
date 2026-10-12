@@ -15,7 +15,7 @@ export function Footer() {
           <h2>{siteConfig.brandName}</h2>
           <p>{siteConfig.tagline}</p>
           <p style={{ marginTop: 10, color: "var(--muted)", fontSize: "0.88rem" }}>
-            Earrings • Jhumki Gift Sets • Flower Bouquets
+            Jhumka Gift Sets • Handmade Rose Bouquets
           </p>
         </div>
         <div>
@@ -42,7 +42,7 @@ export function Footer() {
             <Instagram size={15} /> {siteConfig.instagramHandle}
           </a>
           <span style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8, color: "var(--gold-light)" }}>
-            <Truck size={15} /> Pan India Delivery 🇮🇳
+            <Truck size={15} /> Delivery charge confirmed before final order
           </span>
         </div>
       </div>

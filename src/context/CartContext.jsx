@@ -29,7 +29,7 @@ export function CartProvider({ children }) {
   );
 
   const addToCart = (product, quantity = 1) => {
-    if (!product.available) return;
+    if (!product.available || product.price === null || product.price === undefined) return;
 
     setItems((current) => {
       const existing = current.find((item) => item.id === product.id);

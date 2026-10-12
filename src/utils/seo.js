@@ -1,8 +1,8 @@
 import { siteConfig } from "../data/siteConfig";
 
 export function setSeo({
-  title = "SPR GIFTS.IN | Jhumki Gift Sets & Flower Bouquets | Pan India Delivery",
-  description = "SPR GIFTS.IN offers premium 12-pair & 16-pair Jhumki gift sets and beautiful flower bouquets. Opening offer prices available. Order via WhatsApp with Pan India delivery.",
+  title = "SPR GIFTS.IN | Jhumka Gift Sets & Handmade Rose Bouquets",
+  description = "SPR GIFTS.IN offers premium 12-pair and 16-pair Jhumka gift sets and handmade rose bouquets. Order via WhatsApp and confirm delivery charges before finalizing.",
   image = siteConfig.logo,
   path = "/",
   type = "website",
