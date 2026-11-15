@@ -1,8 +1,9 @@
-import { Instagram, MessageCircle, Truck } from "lucide-react";
+import { Instagram, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories } from "../data/categories";
 import { siteConfig } from "../data/siteConfig";
 import { createWhatsAppUrl } from "../utils/whatsapp";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function Footer() {
   const footerCategories = categories.slice(0, 6);
@@ -36,7 +37,7 @@ export function Footer() {
         <div>
           <h3>Get in Touch</h3>
           <a href={createWhatsAppUrl()} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <MessageCircle size={15} /> WhatsApp: +91 {siteConfig.whatsappDisplayNumber}
+            <WhatsAppIcon size={15} /> WhatsApp: +91 {siteConfig.whatsappDisplayNumber}
           </a>
           <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Instagram size={15} /> {siteConfig.instagramHandle}

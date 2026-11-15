@@ -1,10 +1,11 @@
-import { Instagram, Menu, MessageCircle, ShoppingBag, X, ChevronDown } from "lucide-react";
+import { Instagram, Menu, ShoppingBag, X, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { categories } from "../data/categories";
 import { siteConfig } from "../data/siteConfig";
 import { createWhatsAppUrl } from "../utils/whatsapp";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const navLinks = [
   ["Home", "/"],
@@ -72,7 +73,7 @@ export function Header() {
             <Instagram size={19} />
           </a>
           <a className="whatsapp-icon" href={createWhatsAppUrl()} target="_blank" rel="noreferrer" aria-label="Order on WhatsApp">
-            <MessageCircle size={19} />
+            <WhatsAppIcon size={19} />
           </a>
           <button className="cart-icon" type="button" onClick={openCart} aria-label={`Open cart with ${count} items`}>
             <ShoppingBag size={20} />

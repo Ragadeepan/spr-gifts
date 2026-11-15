@@ -1695,28 +1695,6 @@ body::before {
   padding: 80px 0 60px;
   gap: 40px;
 }
-.hero-trust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
-.trust-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: rgba(212, 175, 99, 0.08);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--gold-light);
-  font-size: 0.82rem;
-  font-weight: 500;
-}
-.trust-item svg { color: var(--gold); }
-
 /* ===========================
    GIFT SHOWCASE ENHANCED
 =========================== */
@@ -3154,10 +3132,6 @@ body,
     width: 100%;
   }
 
-  .hero-trust {
-    grid-template-columns: 1fr;
-  }
-
   .showcase-image-wrapper {
     aspect-ratio: 3 / 4;
   }
@@ -3277,23 +3251,6 @@ body,
 
 .hero-actions { margin-top: 20px; }
 
-.hero-trust {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 18px;
-  padding-top: 16px;
-}
-
-.trust-item {
-  justify-content: center;
-  gap: 7px;
-  padding: 9px 10px;
-  border-radius: 12px;
-  font-size: 0.72rem;
-  text-align: center;
-}
-
 .hero-visual {
   display: block;
   padding: 0;
@@ -3341,7 +3298,6 @@ body,
 
 @media (max-width: 899px) {
   .hero { grid-template-columns: minmax(0, 1fr); padding-block: 30px 24px; }
-  .hero-trust { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero-copy, .hero-visual, .gift-showcase { min-width: 0; width: 100%; }
   .showcase-card { max-width: 450px; }
   .categories-section { padding-top: 24px; }
@@ -3349,8 +3305,6 @@ body,
 
 @media (max-width: 430px) {
   .hero-copy h1 { font-size: clamp(2rem, 10vw, 2.6rem); }
-  .hero-trust { grid-template-columns: 1fr; }
-  .trust-item { justify-content: flex-start; text-align: left; }
 }
 
 /* Reveal each collection as it enters view, with a short stagger. */
@@ -3544,4 +3498,49 @@ body,
   .bouquet-order-card { border-radius: 16px; }
   .bouquet-size-options { gap: 7px; }
   .bouquet-size-option { min-height: 52px; }
+}
+
+.whatsapp-icon svg,
+.floating-whatsapp svg,
+.footer svg { flex: 0 0 auto; }
+.whatsapp-icon svg { transition: transform 200ms ease; }
+.whatsapp-icon:hover svg { transform: rotate(-8deg) scale(1.08); }
+.floating-whatsapp svg { animation: whatsappNudge 3.6s ease-in-out infinite; }
+.hero-actions .gold-button { position: relative; overflow: hidden; }
+.hero-actions .gold-button::after {
+  position: absolute;
+  top: -80%;
+  left: -55%;
+  width: 28%;
+  height: 260%;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: rotate(22deg);
+  opacity: 0;
+}
+.hero-actions .gold-button:hover::after { animation: heroButtonShine 800ms ease-out; }
+
+@keyframes whatsappNudge {
+  0%, 82%, 100% { transform: translateY(0); }
+  87% { transform: translateY(-3px); }
+  92% { transform: translateY(0); }
+  96% { transform: translateY(-1px); }
+}
+
+@keyframes heroButtonShine {
+  0% { left: -55%; opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { left: 130%; opacity: 0; }
+}
+
+@media (max-width: 420px) {
+  .header-actions > a.instagram-icon { display: none; }
+  .header-actions > a.whatsapp-icon { display: grid; }
+  .header-actions > .whatsapp-icon { width: 36px; height: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-whatsapp svg { animation: none; }
+  .whatsapp-icon svg { transition: none; }
+  .hero-actions .gold-button:hover::after { animation: none; }
 }

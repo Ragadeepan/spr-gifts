@@ -43,20 +43,6 @@ export function Home() {
             <Link className="gold-button" to="/shop">
               <Gift size={18} /> Explore Collection
             </Link>
-            <WhatsAppButton className="outline-button" message={`Hello ${siteConfig.brandName}\n\nI'd like to enquire about a gift. Please share availability and confirm the delivery charge for my location before finalizing.`}>
-              Order on WhatsApp
-            </WhatsAppButton>
-          </div>
-          <div className="hero-trust reveal reveal-4">
-            <div className="trust-item">
-              <MessageCircle size={18} /> WhatsApp orders
-            </div>
-            <div className="trust-item">
-              <BadgeCheck size={18} /> Price confirmed first
-            </div>
-            <div className="trust-item">
-              <Truck size={18} /> Delivery by location
-            </div>
           </div>
         </div>
         <div className="hero-visual reveal reveal-3" aria-label="Featured SPR GIFTS.IN products">

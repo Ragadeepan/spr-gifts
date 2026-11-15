@@ -1,10 +1,10 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { MessageCircle } from "lucide-react";
 import { useEffect } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CartDrawer } from "./CartDrawer";
 import { createWhatsAppUrl } from "../utils/whatsapp";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function Layout() {
   const location = useLocation();
@@ -45,7 +45,7 @@ export function Layout() {
         <Outlet />
       </main>
       <a className="floating-whatsapp" href={createWhatsAppUrl()} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
-        <MessageCircle size={19} />
+        <WhatsAppIcon size={20} />
         <span>WhatsApp</span>
       </a>
       <CartDrawer />
