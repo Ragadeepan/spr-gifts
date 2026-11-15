@@ -19,7 +19,7 @@ export function Home() {
     addJsonLd("org-jsonld", organizationJsonLd());
   }, []);
 
-  const homeCategories = categories;
+  const homeCategories = categories.filter((category) => category.id !== "chocolate-packets");
 
   const trustItems = [
     { Icon: MessageCircle, title: "Order on WhatsApp", desc: "Ask about a gift and share your preferences directly with us." },
