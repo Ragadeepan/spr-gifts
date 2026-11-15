@@ -24,7 +24,7 @@ export function ProductCard({ product }) {
   const showImage = (index) => setActiveIndex((index + images.length) % images.length);
 
   return (
-    <article className="product-card reveal">
+    <article className="product-card" data-scroll-reveal>
       <div
         className="product-image"
         onPointerDown={(event) => { pointerStart.current = event.clientX; }}

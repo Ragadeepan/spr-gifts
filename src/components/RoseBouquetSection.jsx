@@ -34,7 +34,7 @@ export function RoseBouquetSection() {
   ].join("\n");
 
   return (
-    <section className="section rose-collection-section" aria-labelledby="rose-collection-title">
+    <section className="section rose-collection-section" data-scroll-reveal aria-labelledby="rose-collection-title">
       <div className="rose-collection-copy">
         <p className="eyebrow">Handmade Collection</p>
         <h2 id="rose-collection-title">A bouquet made for their moment.</h2>

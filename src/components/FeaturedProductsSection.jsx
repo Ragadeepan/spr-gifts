@@ -55,8 +55,8 @@ function FeaturedProductCard({ product, isInCart, onAddToCart }) {
         : "Handmade Rose Bouquets";
 
   return (
-    <article className="featured-product-card">
-      <div className="product-image-wrapper">
+    <article className="featured-product-card" data-scroll-reveal>
+      <div className="product-image-wrapper" style={{ "--card-art": `url("${images[activeImage]}")` }}>
         <Link to={`/product/${product.slug}`} className="product-image-link" aria-label={`View ${product.name}`}>
           <img
             src={images[activeImage] || siteConfig.productPlaceholder}

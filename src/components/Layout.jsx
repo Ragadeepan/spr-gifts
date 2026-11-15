@@ -13,6 +13,31 @@ export function Layout() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname, location.search]);
 
+  useEffect(() => {
+    const targets = [...document.querySelectorAll("[data-scroll-reveal]")];
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      targets.forEach((target) => target.classList.add("is-visible"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+
+    targets.forEach((target, index) => {
+      target.style.setProperty("--scroll-reveal-delay", `${(index % 4) * 70}ms`);
+      observer.observe(target);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
   return (
     <>
       <Header />

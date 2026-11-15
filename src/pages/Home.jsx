@@ -7,7 +7,6 @@ import { InstagramButton } from "../components/InstagramButton";
 import { SectionTitle } from "../components/SectionTitle";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { RoseBouquetSection } from "../components/RoseBouquetSection";
-import { ChocolatePacketSection } from "../components/ChocolatePacketSection";
 import { categories } from "../data/categories";
 import { products } from "../data/products";
 import { siteConfig } from "../data/siteConfig";
@@ -72,24 +71,23 @@ export function Home() {
       </section>
 
       {/* FEATURED CATEGORIES */}
-      <section className="section categories-section">
+      <section className="section categories-section" data-scroll-reveal>
         <CategorySlider categories={homeCategories} title="Shop by Category" />
       </section>
 
       {/* FEATURED PRODUCTS */}
-      <section className="section products-section">
+      <section className="section products-section" data-scroll-reveal>
         <FeaturedProductsSection />
       </section>
 
       <RoseBouquetSection />
-      <ChocolatePacketSection />
 
       {/* WHY CHOOSE SPR */}
-      <section className="section trust-section">
+      <section className="section trust-section" data-scroll-reveal>
         <SectionTitle eyebrow="Why Choose SPR" title={`Why Choose ${siteConfig.brandShort}`} text="Every gift is crafted with attention to detail and love for your special moments." />
         <div className="trust-grid">
-          {trustItems.map((item, idx) => (
-            <article className="trust-card reveal" key={item.title} style={{ animationDelay: `${idx * 100}ms` }}>
+          {trustItems.map((item) => (
+            <article className="trust-card" data-scroll-reveal key={item.title}>
               <div className="trust-icon">
                 <item.Icon size={28} />
               </div>
@@ -101,11 +99,11 @@ export function Home() {
       </section>
 
       {/* HOW TO ORDER */}
-      <section className="section how-order-section">
+      <section className="section how-order-section" data-scroll-reveal>
         <SectionTitle eyebrow="Simple Process" title="How to Order in 4 Easy Steps" text="No online payment required. Order directly via WhatsApp." />
         <div className="steps-grid">
-          {howOrderSteps.map((step, idx) => (
-            <article className="step-card reveal" key={step.num} style={{ animationDelay: `${idx * 120}ms` }}>
+          {howOrderSteps.map((step) => (
+            <article className="step-card" data-scroll-reveal key={step.num}>
               <div className="step-number">{step.num}</div>
               <h3>{step.title}</h3>
               <p>{step.desc}</p>
@@ -114,7 +112,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section faq-section" aria-labelledby="faq-title">
+      <section className="section faq-section" data-scroll-reveal aria-labelledby="faq-title">
         <SectionTitle eyebrow="Helpful Details" title="Frequently asked questions" text="A few helpful details before you enquire." />
         <div className="faq-list">
           <details><summary>How do I place an order?</summary><p>Choose a product and send your request on WhatsApp. We’ll confirm the product details, availability and final price with you before an order is finalized.</p></details>
@@ -126,7 +124,7 @@ export function Home() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="instagram-section">
+      <section className="instagram-section" data-scroll-reveal>
         <div className="instagram-content">
           <div className="instagram-badge">
             <Star size={16} /> @sprgifts.in
@@ -138,7 +136,7 @@ export function Home() {
       </section>
 
       {/* NEWSLETTER / CTA */}
-      <section className="cta-band">
+      <section className="cta-band" data-scroll-reveal>
         <div className="cta-content">
           <span className="gift-micro" aria-hidden="true"><Gift size={20} /></span>
           <p className="eyebrow" style={{ color: "var(--gold-light)" }}>Exclusive Offers</p>

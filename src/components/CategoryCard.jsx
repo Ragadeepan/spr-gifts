@@ -7,22 +7,22 @@ function getCategoryFeatures(categoryId) {
     "jhumka-gift-sets": [
       { icon: PackageCheck, text: "12 & 16 Pair Sets" },
       { icon: MessageCircle, text: "WhatsApp Order" },
-      { icon: Truck, text: "Charge Confirmed" },
+      { icon: Truck, text: "Charges by Location" },
     ],
     "handmade-flower-bouquets": [
       { icon: PackageCheck, text: "Handmade Roses" },
       { icon: MessageCircle, text: "Price on Request" },
-      { icon: Truck, text: "Charge Confirmed" },
+      { icon: Truck, text: "Charges by Location" },
     ],
     "chocolate-bouquets": [
       { icon: PackageCheck, text: "Handmade Chocolate Gift" },
       { icon: MessageCircle, text: "Price on Request" },
-      { icon: Truck, text: "Charge Confirmed" },
+      { icon: Truck, text: "Charges by Location" },
     ],
     "chocolate-packets": [
       { icon: PackageCheck, text: "Custom Packet Size" },
       { icon: MessageCircle, text: "Contact for Price" },
-      { icon: Truck, text: "Charge Confirmed" },
+      { icon: Truck, text: "Charges by Location" },
     ],
   };
   return features[categoryId] || [];
@@ -34,9 +34,12 @@ export function CategoryCard({ category, expanded = false, compact = false }) {
   const features = getCategoryFeatures(category.id);
 
   return (
-    <Link to={`/shop?category=${category.slug}`} className={`category-card-link ${expanded ? "expanded" : ""} ${compact ? "compact" : ""}`} aria-label={`Browse ${category.name}`}>
+    <Link to={`/shop?category=${category.slug}`} className={`category-card-link ${expanded ? "expanded" : ""} ${compact ? "compact" : ""}`} data-scroll-reveal aria-label={`Browse ${category.name}`}>
       <article className="category-card">
-        <div className="category-image-wrapper">
+        <div
+          className={`category-image-wrapper ${category.id === "chocolate-packets" ? "chocolate-packet-art" : ""}`}
+          style={category.id === "chocolate-packets" ? { "--card-art": `url("${image}")` } : undefined}
+        >
           <img
             src={image}
             alt={`${category.name} — SPR GIFTS.IN`}
