@@ -5,7 +5,6 @@ import { FeaturedProductsSection } from "../components/FeaturedProductsSection";
 import { InstagramButton } from "../components/InstagramButton";
 import { SectionTitle } from "../components/SectionTitle";
 import { WhatsAppButton } from "../components/WhatsAppButton";
-import { RoseBouquetSection } from "../components/RoseBouquetSection";
 import { siteConfig } from "../data/siteConfig";
 import { addJsonLd, organizationJsonLd, setSeo } from "../utils/seo";
 import { useEffect } from "react";
@@ -69,8 +68,6 @@ export function Home() {
       <section className="section products-section" data-scroll-reveal>
         <FeaturedProductsSection />
       </section>
-
-      <RoseBouquetSection />
 
       {/* WHY CHOOSE SPR */}
       <section className="section trust-section" data-scroll-reveal>
