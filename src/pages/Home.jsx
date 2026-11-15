@@ -1,14 +1,11 @@
 import { BadgeCheck, Gift, MessageCircle, Star, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
-import { CategorySlider } from "../components/CategorySlider";
 import { GiftShowcase } from "../components/GiftShowcase";
 import { FeaturedProductsSection } from "../components/FeaturedProductsSection";
 import { InstagramButton } from "../components/InstagramButton";
 import { SectionTitle } from "../components/SectionTitle";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { RoseBouquetSection } from "../components/RoseBouquetSection";
-import { categories } from "../data/categories";
-import { products } from "../data/products";
 import { siteConfig } from "../data/siteConfig";
 import { addJsonLd, organizationJsonLd, setSeo } from "../utils/seo";
 import { useEffect } from "react";
@@ -18,8 +15,6 @@ export function Home() {
     setSeo();
     addJsonLd("org-jsonld", organizationJsonLd());
   }, []);
-
-  const homeCategories = categories;
 
   const trustItems = [
     { Icon: MessageCircle, title: "Order on WhatsApp", desc: "Ask about a gift and share your preferences directly with us." },
@@ -68,11 +63,6 @@ export function Home() {
         <div className="hero-visual reveal reveal-3" aria-label="Featured SPR GIFTS.IN products">
           <GiftShowcase />
         </div>
-      </section>
-
-      {/* FEATURED CATEGORIES */}
-      <section className="section categories-section" data-scroll-reveal>
-        <CategorySlider categories={homeCategories} title="Shop by Category" />
       </section>
 
       {/* FEATURED PRODUCTS */}
