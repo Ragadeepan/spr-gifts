@@ -41,7 +41,7 @@ export function Layout() {
   return (
     <>
       <Header />
-      <main>
+      <main key={location.pathname} className="page-transition">
         <Outlet />
       </main>
       <a className="floating-whatsapp" href={createWhatsAppUrl()} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
