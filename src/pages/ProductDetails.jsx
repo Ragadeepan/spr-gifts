@@ -20,7 +20,6 @@ export function ProductDetails() {
   const [pincode, setPincode] = useState("");
   const [budget, setBudget] = useState("");
   const [customization, setCustomization] = useState("");
-  const [packetSize, setPacketSize] = useState("");
   const swipeStartX = useRef(null);
   const { addToCart } = useCart();
   const category = product ? getCategoryById(product.category) : null;
@@ -215,11 +214,6 @@ export function ProductDetails() {
           <label>Pincode <span>(for delivery enquiry)</span>
             <input value={pincode} onChange={(event) => setPincode(event.target.value)} inputMode="numeric" autoComplete="postal-code" placeholder="Your delivery pincode" />
           </label>
-          {product.category === "chocolate-packets" && (
-            <label>Preferred packet size
-              <input value={packetSize} onChange={(event) => setPacketSize(event.target.value)} placeholder="Share your preferred size" />
-            </label>
-          )}
           <label>Preferred budget <span>(optional)</span>
             <input value={budget} onChange={(event) => setBudget(event.target.value)} inputMode="decimal" placeholder="Your budget" />
           </label>
@@ -234,7 +228,7 @@ export function ProductDetails() {
               Add to Cart
             </button>
           )}
-          <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl, { customerName, pincode, budget, customization, packetSize })} target="_blank" rel="noreferrer">
+          <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl, { customerName, pincode, budget, customization })} target="_blank" rel="noreferrer">
             <MessageCircle size={18} />
             WhatsApp Enquiry
           </a>

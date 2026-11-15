@@ -19,7 +19,7 @@ export function Home() {
     addJsonLd("org-jsonld", organizationJsonLd());
   }, []);
 
-  const homeCategories = categories.filter((category) => category.id !== "chocolate-packets");
+  const homeCategories = categories;
 
   const trustItems = [
     { Icon: MessageCircle, title: "Order on WhatsApp", desc: "Ask about a gift and share your preferences directly with us." },
@@ -117,7 +117,7 @@ export function Home() {
         <div className="faq-list">
           <details><summary>How do I place an order?</summary><p>Choose a product and send your request on WhatsApp. We’ll confirm the product details, availability and final price with you before an order is finalized.</p></details>
           <details><summary>Do you deliver across India?</summary><p>{siteConfig.deliveryNote}</p></details>
-          <details><summary>Can I customize a rose bouquet or chocolate packet?</summary><p>Share your preferred size, wrapping, quantity and budget. We’ll discuss what is available and confirm the price with you.</p></details>
+          <details><summary>Can I customize a rose bouquet or chocolate bouquet?</summary><p>Share your preferences in a WhatsApp enquiry. We’ll confirm what is available and the price with you.</p></details>
           <details><summary>What is the price for a 5-rose bouquet?</summary><p>Please contact us for the confirmed price. We are not publishing a 5-rose price until it is confirmed.</p></details>
           <details><summary>Does opening WhatsApp confirm my order?</summary><p>No. WhatsApp opens an enquiry. Your order is not confirmed until product availability, final price and courier charges are confirmed with you.</p></details>
         </div>

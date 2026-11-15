@@ -12,7 +12,6 @@ const productHighlights = {
   "jhumka-16-pair": ["16 Pairs", "Opening Offer", "Premium Box"],
   "handmade-rose-bouquet": ["Handmade", "Rose Bouquet", "Price on Request"],
   "chocolate-bouquet": ["Chocolate Bouquet", "Handmade", "Price on Request"],
-  "chocolate-packet": ["Custom Packet", "Budget Friendly", "Price on Request"],
 };
 
 export function GiftShowcase() {

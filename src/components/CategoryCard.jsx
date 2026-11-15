@@ -19,11 +19,6 @@ function getCategoryFeatures(categoryId) {
       { icon: MessageCircle, text: "Price on Request" },
       { icon: Truck, text: "Charges by Location" },
     ],
-    "chocolate-packets": [
-      { icon: PackageCheck, text: "Custom Packet Size" },
-      { icon: MessageCircle, text: "Contact for Price" },
-      { icon: Truck, text: "Charges by Location" },
-    ],
   };
   return features[categoryId] || [];
 }
@@ -36,10 +31,7 @@ export function CategoryCard({ category, expanded = false, compact = false }) {
   return (
     <Link to={`/shop?category=${category.slug}`} className={`category-card-link ${expanded ? "expanded" : ""} ${compact ? "compact" : ""}`} data-scroll-reveal aria-label={`Browse ${category.name}`}>
       <article className="category-card">
-        <div
-          className={`category-image-wrapper ${category.id === "chocolate-packets" ? "chocolate-packet-art" : ""}`}
-          style={category.id === "chocolate-packets" ? { "--card-art": `url("${image}")` } : undefined}
-        >
+        <div className="category-image-wrapper">
           <img
             src={image}
             alt={`${category.name} — SPR GIFTS.IN`}

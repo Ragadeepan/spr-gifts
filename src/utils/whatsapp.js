@@ -54,9 +54,6 @@ export function createProductMessage(product, quantity, productUrl = "", options
   if (product.code) lines.push(`Product code: ${product.code}`);
   lines.push(`Quantity: ${quantity}`, `Displayed price: ${displayedPrice}`);
   lines.push(`Customer name: ${options.customerName || "Optional"}`);
-  if (product.category === "chocolate-packets") {
-    lines.push(`Preferred packet size: ${options.packetSize || "Please share"}`);
-  }
   lines.push(`Customization: ${options.customization || (product.customizationFields?.length ? "Please share your preferences" : "None specified")}`);
   lines.push(`Preferred budget: ${options.budget || "Please share if applicable"}`);
   lines.push(`Pincode: ${options.pincode || "Please share for a delivery enquiry"}`);

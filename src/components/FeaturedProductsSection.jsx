@@ -48,11 +48,9 @@ function FeaturedProductCard({ product, isInCart, onAddToCart }) {
   const showImage = (index) => setActiveImage((index + images.length) % images.length);
   const categoryLabel = product.category === "jhumka-gift-sets"
     ? "Jhumki Gift Sets"
-    : product.category === "chocolate-packets"
-      ? "Chocolate Packets"
-      : product.category === "chocolate-bouquets"
-        ? "Chocolate Bouquets"
-        : "Handmade Rose Bouquets";
+    : product.category === "chocolate-bouquets"
+      ? "Chocolate Bouquets"
+      : "Handmade Rose Bouquets";
 
   return (
     <article className="featured-product-card" data-scroll-reveal>

@@ -22,13 +22,6 @@ export const categories = [
     image: "/images/products/chocolate-bouquet-01.jpeg",
     description: "Handmade chocolate bouquets for birthdays, anniversaries and special moments.",
   },
-  {
-    id: "chocolate-packets",
-    slug: "chocolate-packets",
-    name: "Chocolate Packets",
-    image: "/images/products/chocolate-bouquet-01.jpeg",
-    description: "Custom chocolate gift packets prepared around your preferred budget and requirements.",
-  },
 ];
 
 export const getCategoryBySlug = (slug) =>

@@ -18,7 +18,7 @@ export function Shop() {
   useEffect(() => {
     setSeo({
       title: "Shop Jhumki Gift Sets & Handmade Bouquets | SPR GIFTS.IN",
-      description: "Shop Jhumki gift sets, handmade rose bouquets, chocolate bouquets and custom chocolate packets from SPR GIFTS.IN. Enquire on WhatsApp.",
+      description: "Shop Jhumki gift sets, handmade rose bouquets and chocolate bouquets from SPR GIFTS.IN. Enquire on WhatsApp.",
       path: "/shop",
     });
   }, []);

@@ -103,30 +103,6 @@ export const products = [
     updatedAt: "2026-11-15",
     tags: ["chocolate bouquet", "handmade", "birthday", "anniversary", "special occasions", "gift"],
   },
-  {
-    id: "chocolate-packet",
-    slug: "chocolate-packet",
-    name: "Chocolate Packet",
-    category: "chocolate-packets",
-    price: null,
-    oldPrice: null,
-    currency: "INR",
-    priceLabel: "Custom Order – Contact for Price",
-    shortDescription: "Custom chocolate gift packets arranged around your preferred budget.",
-    description:
-      "Beautifully presented chocolate gift packets. Custom packet sizes and gift arrangements can be prepared according to your preferred budget and requirements. Contact us to discuss your choice and pricing.",
-    images: ["/images/products/chocolate-bouquet-01.jpeg"],
-    video: null,
-    featured: true,
-    available: true,
-    availabilityLabel: "Custom order enquiry",
-    badge: "Custom Order",
-    sortOrder: 5,
-    createdAt: "2026-11-15",
-    updatedAt: "2026-11-15",
-    customizationFields: ["Packet size", "Quantity", "Preferred budget", "Customization details"],
-    tags: ["chocolate packet", "custom gift", "custom budget", "gift packet"],
-  },
 ];
 
 export const roseBouquetPrices = [
