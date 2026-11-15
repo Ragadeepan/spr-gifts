@@ -1,4 +1,4 @@
-import { Gift, PackageCheck, Sparkles, Heart, Truck, Shield, RotateCcw, Star } from "lucide-react";
+import { BadgeCheck, Gift, MessageCircle, Star, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CategorySlider } from "../components/CategorySlider";
 import { GiftShowcase } from "../components/GiftShowcase";
@@ -23,12 +23,9 @@ export function Home() {
   const homeCategories = categories;
 
   const trustItems = [
-    { Icon: Sparkles, title: "Opening Offers", desc: "Special launch pricing on both Jhumki Gift Sets" },
-    { Icon: PackageCheck, title: "Premium Packaging", desc: "Jhumki sets arrive arranged in elegant gift boxes" },
-    { Icon: Shield, title: "Clear Confirmation", desc: "Availability, price and delivery charge are confirmed before finalizing" },
-    { Icon: Truck, title: "Delivery Updates", desc: "Delivery charge depends on your location and is shared on WhatsApp" },
-    { Icon: RotateCcw, title: "Direct Support", desc: "Questions and order requests are handled through WhatsApp" },
-    { Icon: Heart, title: "Thoughtful Gifting", desc: "Curated for birthdays, anniversaries, festivals and surprises" },
+    { Icon: MessageCircle, title: "Order on WhatsApp", desc: "Ask about a gift and share your preferences directly with us." },
+    { Icon: BadgeCheck, title: "Confirm before ordering", desc: "We confirm availability and the final price with you first." },
+    { Icon: Truck, title: "Delivery details upfront", desc: "Courier availability and charges depend on your location." },
   ];
 
   const howOrderSteps = [
@@ -59,16 +56,13 @@ export function Home() {
           </div>
           <div className="hero-trust reveal reveal-4">
             <div className="trust-item">
-              <Truck size={18} /> Delivery Charge Confirmed
+              <MessageCircle size={18} /> WhatsApp orders
             </div>
             <div className="trust-item">
-              <Shield size={18} /> WhatsApp Ordering
+              <BadgeCheck size={18} /> Price confirmed first
             </div>
             <div className="trust-item">
-              <RotateCcw size={18} /> Direct Support
-            </div>
-            <div className="trust-item">
-              <Heart size={18} /> Handcrafted
+              <Truck size={18} /> Delivery by location
             </div>
           </div>
         </div>

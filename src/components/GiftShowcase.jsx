@@ -120,8 +120,6 @@ export function GiftShowcase() {
     ? -currentIndex * 100 + (touchCurrent - touchStart) / (trackRef.current?.offsetWidth || 1) * 100
     : -currentIndex * 100;
 
-  const progress = ((currentIndex + 1) / productCount) * 100;
-
   return (
     <section className="gift-showcase" aria-label="Gift Showcase">
       <div className="showcase-container">
@@ -212,15 +210,6 @@ export function GiftShowcase() {
                   </div>
                 </article>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="showcase-progress" role="progressbar" aria-valuenow={currentIndex + 1} aria-valuemin={1} aria-valuemax={productCount}>
-          <div className="progress-fill" style={{ width: `${progress}%` }} />
-          <div className="progress-dots">
-            {showcaseProducts.map((_, idx) => (
-              <span key={idx} className={idx === currentIndex ? "active" : ""} />
             ))}
           </div>
         </div>
