@@ -5,13 +5,14 @@ import { products } from "../data/products";
 import { siteConfig } from "../data/siteConfig";
 import { formatPrice } from "../utils/formatPrice";
 
-const showcaseProducts = products.filter(p => p.featured).slice(0, 4);
+const showcaseProducts = products.filter((product) => product.featured && product.available);
 
 const productHighlights = {
   "jhumka-12-pair": ["12 Pairs", "Opening Offer", "Premium Box"],
   "jhumka-16-pair": ["16 Pairs", "Opening Offer", "Premium Box"],
   "handmade-rose-bouquet": ["Handmade", "Rose Bouquet", "Price on Request"],
   "chocolate-bouquet": ["Chocolate Bouquet", "Handmade", "Price on Request"],
+  "chocolate-packet": ["Custom Packet", "Budget Friendly", "Price on Request"],
 };
 
 export function GiftShowcase() {
@@ -24,10 +25,8 @@ export function GiftShowcase() {
   const [autoSlidePaused, setAutoSlidePaused] = useState(false);
   const [hoverPaused, setHoverPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [desktopAutoplay, setDesktopAutoplay] = useState(false);
-
   const productCount = showcaseProducts.length;
-  const paused = autoSlidePaused || hoverPaused || reducedMotion || !desktopAutoplay;
+  const paused = autoSlidePaused || hoverPaused || reducedMotion;
 
   const goToSlide = useCallback((index) => {
     if (!productCount) return;
@@ -87,16 +86,11 @@ export function GiftShowcase() {
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateMotion = () => setReducedMotion(media.matches);
-    const updateAutoplayMode = () => setDesktopAutoplay(window.innerWidth >= 768);
-
     updateMotion();
-    updateAutoplayMode();
     media.addEventListener("change", updateMotion);
-    window.addEventListener("resize", updateAutoplayMode);
 
     return () => {
       media.removeEventListener("change", updateMotion);
-      window.removeEventListener("resize", updateAutoplayMode);
     };
   }, []);
 
@@ -151,7 +145,9 @@ export function GiftShowcase() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
           onTouchCancel={handleTouchEnd}
-          onMouseEnter={() => setHoverPaused(true)}
+          onMouseEnter={() => {
+            if (window.matchMedia("(hover: hover)").matches) setHoverPaused(true);
+          }}
           onMouseLeave={() => {
             setHoverPaused(false);
             resumeAutoplaySoon();

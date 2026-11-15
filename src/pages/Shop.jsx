@@ -16,8 +16,8 @@ export function Shop() {
 
   useEffect(() => {
     setSeo({
-      title: "Shop Jhumka Gift Sets & Handmade Bouquets | SPR GIFTS.IN",
-      description: "Browse premium 12-pair and 16-pair Jhumka gift sets and handmade rose bouquets from SPR GIFTS.IN. Order via WhatsApp.",
+      title: "Shop Jhumki Gift Sets & Handmade Bouquets | SPR GIFTS.IN",
+      description: "Shop Jhumki gift sets, handmade rose bouquets, chocolate bouquets and custom chocolate packets from SPR GIFTS.IN. Enquire on WhatsApp.",
       path: "/shop",
     });
   }, []);
@@ -63,14 +63,14 @@ export function Shop() {
       <SectionTitle
         eyebrow="Shop"
         title="Premium Gift Collection"
-        text="Browse Jhumka Gift Sets and Handmade Flower Bouquets. Order via WhatsApp."
+        text="Explore Jhumki gift sets, handmade rose bouquets and custom chocolate gifts. Enquire on WhatsApp and confirm the final price before ordering."
       />
       <div className="shop-toolbar">
         <input
           type="search"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search Jhumka sets, rose bouquet..."
+          placeholder="Search Jhumki, roses, chocolate gifts..."
           aria-label="Search products"
         />
         <button className="filter-toggle" type="button" onClick={() => setMobileFilters(true)}>

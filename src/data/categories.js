@@ -3,9 +3,9 @@ export const categories = [
     id: "jhumka-gift-sets",
     slug: "jhumka-gift-sets",
     legacySlugs: ["jhumki-gift-sets"],
-    name: "Jhumka Gift Sets",
+    name: "Jhumki Gift Sets",
     image: "/images/products/jhumki-16-pair.webp",
-    description: "Premium Jhumka earring gift sets in 12-pair and 16-pair collections.",
+    description: "Premium Jhumki earring gift sets in 12-pair and 16-pair collections.",
   },
   {
     id: "handmade-flower-bouquets",
@@ -21,6 +21,13 @@ export const categories = [
     name: "Chocolate Bouquets",
     image: "/images/products/chocolate-bouquet-01.jpeg",
     description: "Handmade chocolate bouquets for birthdays, anniversaries and special moments.",
+  },
+  {
+    id: "chocolate-packets",
+    slug: "chocolate-packets",
+    name: "Chocolate Packets",
+    image: "/images/products/chocolate-bouquet-01.jpeg",
+    description: "Custom chocolate gift packets prepared around your preferred budget and requirements.",
   },
 ];
 

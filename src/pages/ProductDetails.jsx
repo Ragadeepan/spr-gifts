@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { getCategoryById } from "../data/categories";
 import { getProductBySlug } from "../data/products";
+import { products } from "../data/products";
+import { ProductCard } from "../components/ProductCard";
 import { siteConfig } from "../data/siteConfig";
 import { formatPrice } from "../utils/formatPrice";
 import { addJsonLd, breadcrumbJsonLd, productJsonLd, setSeo } from "../utils/seo";
@@ -14,6 +16,11 @@ export function ProductDetails() {
   const product = getProductBySlug(slug);
   const [quantity, setQuantity] = useState(1);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [customerName, setCustomerName] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [budget, setBudget] = useState("");
+  const [customization, setCustomization] = useState("");
+  const [packetSize, setPacketSize] = useState("");
   const swipeStartX = useRef(null);
   const { addToCart } = useCart();
   const category = product ? getCategoryById(product.category) : null;
@@ -107,7 +114,7 @@ export function ProductDetails() {
           <img
             className="main-product-image"
             src={activeImage}
-            alt={product.name}
+            alt={`${product.name} product image ${activeIndex + 1}`}
             width="900"
             height="1100"
             draggable="false"
@@ -160,6 +167,7 @@ export function ProductDetails() {
           {category?.name}
         </Link>
         <h1>{product.name}</h1>
+        {product.code && <p className="product-code">Product code: {product.code}</p>}
         <p>{product.shortDescription}</p>
         {(product.brand || product.tagline) && (
           <p className="product-brand-line">{[product.brand, product.tagline].filter(Boolean).join(" · ")}</p>
@@ -175,7 +183,7 @@ export function ProductDetails() {
           )}
         </div>
         <span className={product.available ? "available" : "unavailable"} style={{ marginBottom: 14 }}>
-          {product.available ? "● Available" : "● Currently unavailable"}
+          {product.available ? `● ${product.availabilityLabel || "Available"}` : "● Currently unavailable"}
         </span>
         <p style={{ color: "var(--text-soft)", lineHeight: 1.7 }}>{product.description}</p>
         {product.highlights?.length > 0 && (
@@ -191,17 +199,34 @@ export function ProductDetails() {
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        {hasPrice && (
-          <div className="quantity-row large">
-            <button type="button" onClick={() => setQuantity((value) => Math.max(1, value - 1))} aria-label="Decrease quantity">
-              <Minus size={16} />
-            </button>
-            <span>{quantity}</span>
-            <button type="button" onClick={() => setQuantity((value) => value + 1)} aria-label="Increase quantity">
-              <Plus size={16} />
-            </button>
-          </div>
-        )}
+        <div className="quantity-row large" aria-label="Select quantity">
+          <button type="button" onClick={() => setQuantity((value) => Math.max(1, value - 1))} aria-label="Decrease quantity">
+            <Minus size={16} />
+          </button>
+          <span>{quantity}</span>
+          <button type="button" onClick={() => setQuantity((value) => value + 1)} aria-label="Increase quantity">
+            <Plus size={16} />
+          </button>
+        </div>
+        <div className="enquiry-fields product-enquiry-fields">
+          <label>Customer name <span>(optional)</span>
+            <input value={customerName} onChange={(event) => setCustomerName(event.target.value)} autoComplete="name" placeholder="Your name" />
+          </label>
+          <label>Pincode <span>(for delivery enquiry)</span>
+            <input value={pincode} onChange={(event) => setPincode(event.target.value)} inputMode="numeric" autoComplete="postal-code" placeholder="Your delivery pincode" />
+          </label>
+          {product.category === "chocolate-packets" && (
+            <label>Preferred packet size
+              <input value={packetSize} onChange={(event) => setPacketSize(event.target.value)} placeholder="Share your preferred size" />
+            </label>
+          )}
+          <label>Preferred budget <span>(optional)</span>
+            <input value={budget} onChange={(event) => setBudget(event.target.value)} inputMode="decimal" placeholder="Your budget" />
+          </label>
+          <label className="field-span">Customization details <span>(optional)</span>
+            <textarea value={customization} onChange={(event) => setCustomization(event.target.value)} rows="3" placeholder="Share your preferences or special message" />
+          </label>
+        </div>
         <div className="detail-actions">
           {hasPrice && (
             <button className="gold-button" type="button" disabled={!product.available} onClick={() => addToCart(product, quantity)}>
@@ -209,9 +234,9 @@ export function ProductDetails() {
               Add to Cart
             </button>
           )}
-          <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl)} target="_blank" rel="noreferrer">
+          <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl, { customerName, pincode, budget, customization, packetSize })} target="_blank" rel="noreferrer">
             <MessageCircle size={18} />
-            Order on WhatsApp
+            WhatsApp Enquiry
           </a>
         </div>
       </article>
@@ -229,6 +254,13 @@ export function ProductDetails() {
           />
         </section>
       )}
+      <section className="related-products-section" aria-labelledby="related-products-title">
+        <p className="eyebrow">Explore more</p>
+        <h2 id="related-products-title">Related gifts</h2>
+        <div className="product-grid">
+          {products.filter((item) => item.id !== product.id && item.available).slice(0, 3).map((item) => <ProductCard key={item.id} product={item} />)}
+        </div>
+      </section>
     </section>
   );
 }

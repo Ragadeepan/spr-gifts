@@ -14,6 +14,16 @@ function getCategoryFeatures(categoryId) {
       { icon: MessageCircle, text: "Price on Request" },
       { icon: Truck, text: "Charge Confirmed" },
     ],
+    "chocolate-bouquets": [
+      { icon: PackageCheck, text: "Handmade Chocolate Gift" },
+      { icon: MessageCircle, text: "Price on Request" },
+      { icon: Truck, text: "Charge Confirmed" },
+    ],
+    "chocolate-packets": [
+      { icon: PackageCheck, text: "Custom Packet Size" },
+      { icon: MessageCircle, text: "Contact for Price" },
+      { icon: Truck, text: "Charge Confirmed" },
+    ],
   };
   return features[categoryId] || [];
 }

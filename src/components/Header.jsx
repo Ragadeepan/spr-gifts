@@ -39,7 +39,10 @@ export function Header() {
       <header className="site-header">
         <Link className="brand-lockup" to="/" aria-label={`${siteConfig.brandName} home`}>
           <img src={siteConfig.logo} alt={`${siteConfig.brandName} logo`} />
-          <span>{siteConfig.brandName}</span>
+          <span className="brand-copy">
+            <span className="brand-name">{siteConfig.brandName}</span>
+            <span className="brand-tagline">{siteConfig.tagline}</span>
+          </span>
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -75,7 +78,7 @@ export function Header() {
             <ShoppingBag size={20} />
             {count > 0 && <span>{count}</span>}
           </button>
-          <button className="menu-button" type="button" onClick={() => setMenuOpen(true)} aria-label="Open menu">
+          <button className="menu-button" type="button" onClick={() => setMenuOpen(true)} aria-label="Open menu" aria-expanded={menuOpen}>
             <Menu />
           </button>
         </div>

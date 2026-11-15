@@ -1,11 +1,13 @@
 export const siteConfig = {
   brandName: "SPR GIFTS.IN",
   brandShort: "SPR GIFTS",
-  tagline: "Premium Jhumka gift sets and handmade bouquets",
-  headline: "Premium Gifts for Special Moments",
-  subheadline: "Jhumka Gift Sets • Handmade Rose Bouquets • WhatsApp Ordering",
+  tagline: "Gifts Made Special",
+  headline: "Make every moment feel thoughtfully gifted.",
+  subheadline: "Jhumki Gift Sets • Handmade Rose Bouquets • Chocolate Gifts",
   description:
-    "SPR GIFTS.IN offers premium Jhumka gift sets and handmade rose bouquets. Order through WhatsApp and confirm delivery charges before finalizing.",
+    "Discover curated Jhumki gift sets, handmade rose bouquets and chocolate gifts from SPR GIFTS.IN. Enquire on WhatsApp and confirm availability and courier charges for your location.",
+  roseBouquetDescription:
+    "Beautiful handmade rose bouquets, carefully prepared with love. Custom bouquet sizes and designs are available according to your preferred budget and requirements. Contact us for customization and pricing.",
   whatsappNumber: "919363797846",
   whatsappDisplayNumber: "93637 97846",
   instagramUrl: "https://www.instagram.com/sprgifts.in/",
@@ -13,6 +15,7 @@ export const siteConfig = {
   currency: "INR",
   currencySymbol: "₹",
   canonicalUrl: "https://spr-gifts-in.web.app",
+  deliveryNote: "Pan India delivery, subject to service availability and courier charges.",
   logo: "/logo/spr-gifts-logo.png",
   heroImage: "/images/hero/luxury-gift-hero.webp",
   productPlaceholder: "/images/products/product-fallback.webp",

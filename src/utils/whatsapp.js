@@ -21,15 +21,21 @@ export function createCartMessage(items, subtotal) {
 
   items.forEach((item, index) => {
     lines.push(`${index + 1}. ${item.name}`);
+    if (item.code) lines.push(`Product code: ${item.code}`);
     lines.push(`Quantity: ${item.quantity}`);
     lines.push(`Displayed price: ${formatPrice(item.price)}`);
+    if (item.customizationFields?.length) lines.push("Customization: Please share my preferences and budget on WhatsApp");
     lines.push("");
   });
 
   lines.push(`Total Items: ${totalItems}`);
   if (subtotal) lines.push(`Estimated Total: ${formatPrice(subtotal)}`);
   lines.push("");
-  lines.push("Please confirm availability and the delivery charge for my location before finalizing the order.");
+  lines.push("Customer name: Optional");
+  lines.push("Customization or budget: Please share your preferences if applicable");
+  lines.push("Pincode: Please share before confirming delivery");
+  lines.push("Please confirm availability, final price and courier charges for my location before finalizing the order.");
+  lines.push("This message is an enquiry and does not confirm an order.");
   lines.push(`Website: ${siteConfig.canonicalUrl}`);
   lines.push("");
   lines.push("Thank you.");
@@ -37,18 +43,25 @@ export function createCartMessage(items, subtotal) {
   return lines.join("\n");
 }
 
-export function createProductMessage(product, quantity, productUrl = "") {
-  const hasPrice = product.price !== null && product.price !== undefined;
+export function createProductMessage(product, quantity, productUrl = "", options = {}) {
   const displayedPrice = product.priceLabel || formatPrice(product.price);
   const lines = [
     `Hello ${siteConfig.brandName}`,
     "",
-    `I would like to order/enquire about: ${product.name}`,
-    hasPrice ? `Quantity: ${quantity}` : "Rose count/design: Please share available options",
-    `Displayed price: ${displayedPrice}`,
-    "",
-    "Please confirm availability and the delivery charge for my location before finalizing the order.",
+    `I would like to enquire about: ${product.name}`,
   ];
+
+  if (product.code) lines.push(`Product code: ${product.code}`);
+  lines.push(`Quantity: ${quantity}`, `Displayed price: ${displayedPrice}`);
+  lines.push(`Customer name: ${options.customerName || "Optional"}`);
+  if (product.category === "chocolate-packets") {
+    lines.push(`Preferred packet size: ${options.packetSize || "Please share"}`);
+  }
+  lines.push(`Customization: ${options.customization || (product.customizationFields?.length ? "Please share your preferences" : "None specified")}`);
+  lines.push(`Preferred budget: ${options.budget || "Please share if applicable"}`);
+  lines.push(`Pincode: ${options.pincode || "Please share for a delivery enquiry"}`);
+  lines.push("", "Please confirm availability, the final price and courier charges for my location before finalizing the order.");
+  lines.push("This message is an enquiry and does not confirm an order.");
 
   if (productUrl) lines.push(`Product URL: ${productUrl}`);
   else lines.push(`Website: ${siteConfig.canonicalUrl}`);
@@ -60,6 +73,6 @@ export function cartWhatsAppUrl(items, subtotal) {
   return createWhatsAppUrl(createCartMessage(items, subtotal));
 }
 
-export function productWhatsAppUrl(product, quantity, productUrl) {
-  return createWhatsAppUrl(createProductMessage(product, quantity, productUrl));
+export function productWhatsAppUrl(product, quantity, productUrl, options) {
+  return createWhatsAppUrl(createProductMessage(product, quantity, productUrl, options));
 }

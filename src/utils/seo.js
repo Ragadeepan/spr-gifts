@@ -1,8 +1,8 @@
 import { siteConfig } from "../data/siteConfig";
 
 export function setSeo({
-  title = "SPR GIFTS.IN | Jhumka Gift Sets & Handmade Rose Bouquets",
-  description = "SPR GIFTS.IN offers premium 12-pair and 16-pair Jhumka gift sets and handmade rose bouquets. Order via WhatsApp and confirm delivery charges before finalizing.",
+  title = "SPR GIFTS.IN | Online Gift Shop India | Gifts Made Special",
+  description = "Shop Jhumki gift sets, handmade rose bouquets and custom chocolate gifts from SPR GIFTS.IN. Enquire on WhatsApp. Pan India delivery, subject to service availability and courier charges.",
   image = siteConfig.logo,
   path = "/",
   type = "website",
@@ -57,11 +57,11 @@ export function organizationJsonLd() {
 }
 
 export function productJsonLd(product, categoryName) {
-  return {
+  const data = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    sku: product.id,
+    sku: product.code || product.id,
     category: categoryName,
     description: product.description,
     image: product.images?.map(absoluteUrl),
@@ -69,25 +69,21 @@ export function productJsonLd(product, categoryName) {
       "@type": "Brand",
       name: siteConfig.brandName,
     },
-    offers: product.price !== null && product.price !== undefined
-      ? {
-          "@type": "Offer",
-          priceCurrency: product.currency || siteConfig.currency,
-          price: product.price,
-          availability: product.available
-            ? "https://schema.org/InStock"
-            : "https://schema.org/OutOfStock",
-          url: absoluteUrl(`/product/${product.slug}`),
-        }
-      : {
-          "@type": "Offer",
-          priceCurrency: product.currency || siteConfig.currency,
-          availability: product.available
-            ? "https://schema.org/InStock"
-            : "https://schema.org/OutOfStock",
-          url: absoluteUrl(`/product/${product.slug}`),
-        },
   };
+
+  if (product.price !== null && product.price !== undefined) {
+    data.offers = {
+      "@type": "Offer",
+      priceCurrency: product.currency || siteConfig.currency,
+      price: product.price,
+      availability: product.available
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      url: absoluteUrl(`/product/${product.slug}`),
+    };
+  }
+
+  return data;
 }
 
 export function breadcrumbJsonLd(items) {

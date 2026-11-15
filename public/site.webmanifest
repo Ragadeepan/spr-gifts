@@ -1,11 +1,11 @@
 {
   "name": "SPR GIFTS.IN",
   "short_name": "SPR GIFTS.IN",
-  "description": "Premium gifts, bouquets and personalized surprises.",
+  "description": "Jhumki gift sets, handmade rose bouquets and custom chocolate gifts. Gifts Made Special.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fffaf2",
-  "theme_color": "#090706",
+  "background_color": "#0a0604",
+  "theme_color": "#0a0604",
   "icons": [
     {
       "src": "/logo/spr-gifts-logo.png",

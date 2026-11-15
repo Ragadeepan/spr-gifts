@@ -10,7 +10,7 @@ export function Contact() {
   useEffect(() => {
     setSeo({
       title: `Contact ${siteConfig.brandName} | WhatsApp Gift Orders`,
-      description: `Contact ${siteConfig.brandName} on WhatsApp or Instagram for premium gifts and custom bouquet orders in Tamil Nadu, India.`,
+      description: `Contact ${siteConfig.brandName} on WhatsApp or Instagram for Jhumki gift sets, handmade bouquets and custom chocolate gifts in India.`,
       path: "/contact",
     });
   }, []);

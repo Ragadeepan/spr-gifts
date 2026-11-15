@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sprgifts.in/sitemap.xml
+Sitemap: https://spr-gifts-in.web.app/sitemap.xml

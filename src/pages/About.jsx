@@ -10,14 +10,14 @@ export function About() {
   useEffect(() => {
     setSeo({
       title: `About ${siteConfig.brandName} | Premium Personalized Gifts`,
-      description: `${siteConfig.brandName} is a premium gifting brand focused on Jhumka gift sets and handmade rose bouquets.`,
+      description: `${siteConfig.brandName} offers Jhumki gift sets, handmade rose bouquets and custom chocolate gifts.`,
       path: "/about",
     });
   }, []);
 
   return (
     <section className="page section about-page">
-      <SectionTitle eyebrow="About" title={siteConfig.brandName} text="A premium gifting brand for Jhumka gift sets and handmade rose bouquets, made for special moments." />
+      <SectionTitle eyebrow="About" title={siteConfig.brandName} text="A premium gifting brand for Jhumki gift sets, handmade rose bouquets and custom chocolate gifts, made for special moments." />
 
       <div className="content-panel" style={{ marginBottom: 28 }}>
         <p>
@@ -25,7 +25,7 @@ export function About() {
           The collection is designed for people who want gifting to feel personal, polished and thoughtful.
         </p>
         <p>
-          We curate 12-pair and 16-pair Jhumka gift sets along with handmade rose bouquets, each presented with a
+          We curate 12-pair and 16-pair Jhumki gift sets, handmade rose bouquets and chocolate gifts, each presented with a
           premium finish.
         </p>
         <p>
@@ -37,7 +37,7 @@ export function About() {
       <div className="trust-grid" style={{ marginBottom: 36 }}>
         {[
           [Sparkles, "Thoughtfully Made Gifts", "Each product is prepared with intention."],
-          [Gift, "Focused Collection", "Only Jhumka gift sets and handmade rose bouquets."],
+          [Gift, "Thoughtful Collections", "Jhumki gift sets, handmade rose bouquets and custom chocolate gifts."],
           [PackageCheck, "Beautifully Packed", "Premium wrapping for a gift-ready first impression."],
           [Heart, "Made for Memories", "Gifts designed to mark what matters."],
           [Sparkles, "Modern Gifting Studio", "A boutique approach to every order."],

@@ -18,7 +18,7 @@ export function FeaturedProductsSection() {
       <div className="section-header">
         <div className="section-header-left">
           <p className="eyebrow">Available Now</p>
-          <h2>Featured Products</h2>
+          <h2>Featured Gifts</h2>
         </div>
       </div>
 
@@ -47,10 +47,12 @@ function FeaturedProductCard({ product, isInCart, onAddToCart }) {
   }, [images.length]);
   const showImage = (index) => setActiveImage((index + images.length) % images.length);
   const categoryLabel = product.category === "jhumka-gift-sets"
-    ? "Jhumka Gift Sets"
-    : product.category === "chocolate-bouquets"
-      ? "Chocolate Bouquets"
-      : "Handmade Flower Bouquets";
+    ? "Jhumki Gift Sets"
+    : product.category === "chocolate-packets"
+      ? "Chocolate Packets"
+      : product.category === "chocolate-bouquets"
+        ? "Chocolate Bouquets"
+        : "Handmade Rose Bouquets";
 
   return (
     <article className="featured-product-card">
@@ -59,7 +61,7 @@ function FeaturedProductCard({ product, isInCart, onAddToCart }) {
           <img
             src={images[activeImage] || siteConfig.productPlaceholder}
             alt={`${product.name} product photo ${activeImage + 1} from ${siteConfig.brandName}`}
-            loading="eager"
+            loading={product.sortOrder <= 2 ? "eager" : "lazy"}
             decoding="async"
             width="600"
             height="750"
@@ -96,6 +98,7 @@ function FeaturedProductCard({ product, isInCart, onAddToCart }) {
         <Link to={`/product/${product.slug}`} className="product-title-link">
           <h3 className="product-title">{product.name}</h3>
         </Link>
+        {product.code && <p className="product-code">Code: {product.code}</p>}
         <p className="product-short-desc">{product.shortDescription}</p>
         <div className="product-price-row">
           {hasPrice ? (
