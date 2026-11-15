@@ -65,11 +65,9 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(112deg, transparent 40%, rgba(241, 209, 135, 0.035) 48%, rgba(255, 250, 237, 0.045) 50%, rgba(212, 175, 99, 0.025) 52%, transparent 61%),
     radial-gradient(circle at 25% 30%, rgba(212, 175, 99, 0.04) 0, transparent 1.5px),
     radial-gradient(circle at 75% 60%, rgba(212, 175, 99, 0.03) 0, transparent 1.5px);
-  background-size: 220% 100%, 80px 80px, 110px 110px;
-  background-position: 130% 0, 0 0, 0 0;
+  background-size: 80px 80px, 110px 110px;
   opacity: 0.6;
 }
 
@@ -3675,12 +3673,6 @@ body,
 
 /* Mirror-polished lighting: soft ambient reflection behind the page, with
    restrained highlights on framed surfaces and their interactive states. */
-@media (min-width: 700px) and (prefers-reduced-motion: no-preference) {
-  body::after {
-    animation: siteMirrorReflection 30s ease-in-out infinite;
-  }
-}
-
 .site-header {
   box-shadow: inset 0 -1px 0 rgba(255, 248, 230, .035), 0 12px 30px rgba(0, 0, 0, .12);
 }
@@ -3801,11 +3793,6 @@ body,
   }
 }
 
-@keyframes siteMirrorReflection {
-  0%, 66%, 100% { background-position: 130% 0, 0 0, 0 0; }
-  84% { background-position: -30% 0, 0 0, 0 0; }
-}
-
 @keyframes borderReflection {
   0%, 68%, 100% { background-position: 100% 0; }
   86% { background-position: -100% 0; }
@@ -3818,18 +3805,9 @@ body,
 }
 
 @media (max-width: 699px) {
-  body::after { background-image:
-    radial-gradient(circle at 25% 30%, rgba(212, 175, 99, 0.04) 0, transparent 1.5px),
-    radial-gradient(circle at 75% 60%, rgba(212, 175, 99, 0.03) 0, transparent 1.5px);
-    background-size: 80px 80px, 110px 110px;
-    background-position: 0 0, 0 0;
-    animation: none;
-  }
-
   .site-header::after,
   .footer::before {
-    animation: none;
-    background-position: 50% 0;
+    animation-duration: 26s;
   }
 }
 
@@ -3885,5 +3863,86 @@ body,
   .page-transition,
   .desktop-nav a.active::after {
     animation: none !important;
+  }
+}
+
+/* The reflection is a dedicated layer above the page background and below
+   readable content, so the moving beam stays visible without washing out text. */
+#root {
+  position: relative;
+  isolation: isolate;
+}
+
+.mirror-light-field {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mirror-light-field::before {
+  position: absolute;
+  top: -40vh;
+  left: -34vw;
+  width: clamp(210px, 30vw, 440px);
+  height: 180vh;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(212, 175, 99, .025) 26%,
+    rgba(241, 209, 135, .11) 43%,
+    rgba(255, 250, 237, .19) 50%,
+    rgba(241, 209, 135, .1) 56%,
+    rgba(212, 175, 99, .025) 74%,
+    transparent 100%);
+  content: "";
+  opacity: 0;
+  transform: translate3d(-12vw, 0, 0) rotate(18deg);
+  will-change: transform, opacity;
+}
+
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mirror-light-field::before {
+    animation: mirrorLightSweep 34s linear infinite;
+  }
+}
+
+@media (max-width: 699px) {
+  .mirror-light-field::before {
+    left: -54vw;
+    width: 54vw;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(212, 175, 99, .02) 28%,
+      rgba(241, 209, 135, .075) 44%,
+      rgba(255, 250, 237, .13) 50%,
+      rgba(241, 209, 135, .065) 56%,
+      rgba(212, 175, 99, .02) 72%,
+      transparent 100%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .mirror-light-field::before { animation-duration: 42s; }
+  }
+}
+
+@keyframes mirrorLightSweep {
+  0% { opacity: 0; transform: translate3d(-12vw, 0, 0) rotate(18deg); }
+  4% { opacity: .78; }
+  39% { opacity: .78; transform: translate3d(238vw, 0, 0) rotate(18deg); }
+  47%, 100% { opacity: 0; transform: translate3d(238vw, 0, 0) rotate(18deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mirror-light-field::before {
+    display: none;
+    animation: none !important;
+    will-change: auto;
   }
 }

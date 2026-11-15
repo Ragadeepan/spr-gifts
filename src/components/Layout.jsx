@@ -40,6 +40,7 @@ export function Layout() {
 
   return (
     <>
+      <div className="mirror-light-field" aria-hidden="true" />
       <Header />
       <main key={location.pathname} className="page-transition">
         <Outlet />
