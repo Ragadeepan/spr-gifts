@@ -3490,6 +3490,56 @@ body,
 .card-actions a.gold-button { border-color: rgba(241, 209, 135, 0.5); background: linear-gradient(120deg, #e2bd70, #f4dfa5 48%, #d8ab54); color: var(--black); box-shadow: var(--shadow-gold); }
 .card-actions a.gold-button:hover { border-color: var(--gold-light); background: linear-gradient(120deg, #e2bd70, #f4dfa5 48%, #d8ab54); color: var(--black); }
 
+.shop-page .product-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  align-items: stretch;
+  gap: clamp(14px, 2vw, 22px);
+}
+.shop-page .product-card { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+.shop-page .product-card .product-image {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 100%;
+  height: clamp(210px, 24vw, 270px);
+  aspect-ratio: auto;
+  padding: 10px;
+  background: linear-gradient(145deg, #fffdf8, #e9ddc8);
+}
+.shop-page .product-card .product-image-link { display: block; width: 100%; height: 100%; }
+.shop-page .product-card .product-image img { width: 100%; height: 100%; object-fit: contain; }
+.shop-page .product-body { display: flex; flex: 1; flex-direction: column; align-items: stretch; padding: 16px; }
+.shop-page .product-body > .product-card-category {
+  margin: 0 0 7px;
+  color: var(--gold-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.shop-page .product-body > h3 { min-height: 2.6em; margin: 0 0 8px; font-size: clamp(1.05rem, 1.4vw, 1.22rem); }
+.shop-page .product-body > .product-code { margin: -2px 0 8px !important; }
+.shop-page .product-body > .product-card-description {
+  flex: 1;
+  margin: 0 0 12px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.55;
+  text-transform: none;
+}
+.shop-page .product-card-status { margin-top: 8px; font-size: 0.74rem; letter-spacing: 0.03em; }
+.shop-page .card-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: auto; padding-top: 14px; }
+.shop-page .card-actions a,
+.shop-page .card-actions button { min-width: 0; padding: 9px 10px; font-size: 0.82rem; }
+
+@media (max-width: 520px) {
+  .shop-page .product-grid { grid-template-columns: minmax(0, 1fr); }
+  .shop-page .product-card .product-image { height: 240px; }
+}
+
 @media (max-width: 430px) {
   .bouquet-order-card { border-radius: 16px; }
   .bouquet-size-options { gap: 7px; }

@@ -93,7 +93,7 @@ export function Shop() {
   };
 
   return (
-    <section className="page section">
+    <section className="page section shop-page">
       <SectionTitle
         eyebrow="Shop"
         title="Premium Gift Collection"

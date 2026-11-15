@@ -69,15 +69,17 @@ export function ProductCard({ product }) {
         {product.available && product.badge && <span className="product-badge">{product.badge}</span>}
       </div>
       <div className="product-body">
-        <p>{category?.name || product.category}</p>
+        <p className="product-card-category">{category?.name || product.category}</p>
         <h3>{product.name}</h3>
         {product.code && <p className="product-code">Code: {product.code}</p>}
-        <p style={{ fontSize: "0.9rem", margin: "4px 0", color: "var(--text-soft)" }}>{product.shortDescription}</p>
-        <div className="price-row">
-          <strong>{product.priceLabel || formatPrice(product.price)}</strong>
-          {hasPrice && product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
-        </div>
-        <span className={product.available ? "available" : "unavailable"}>
+        <p className="product-card-description">{product.shortDescription}</p>
+        {hasPrice && (
+          <div className="price-row">
+            <strong>{formatPrice(product.price)}</strong>
+            {product.oldPrice && <del>{formatPrice(product.oldPrice)}</del>}
+          </div>
+        )}
+        <span className={`product-card-status ${product.available ? "available" : "unavailable"}`}>
           {product.available ? `● ${product.availabilityLabel || "Available"}` : "● Currently unavailable"}
         </span>
         <div className="card-actions">
