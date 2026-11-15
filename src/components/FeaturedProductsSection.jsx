@@ -1,5 +1,7 @@
 import { ChevronRight, MessageCircle, ShoppingBag } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { products } from "../data/products";
 import { siteConfig } from "../data/siteConfig";
@@ -36,17 +38,27 @@ export function FeaturedProductsSection() {
 
 function FeaturedProductCard({ product, isInCart, onAddToCart }) {
   const hasPrice = product.price !== null && product.price !== undefined;
+  const images = product.images?.length ? product.images : [siteConfig.productPlaceholder];
+  const [activeImage, setActiveImage] = useState(0);
+  useEffect(() => {
+    if (images.length < 2) return undefined;
+    const timer = window.setInterval(() => setActiveImage((index) => (index + 1) % images.length), 4500);
+    return () => window.clearInterval(timer);
+  }, [images.length]);
+  const showImage = (index) => setActiveImage((index + images.length) % images.length);
   const categoryLabel = product.category === "jhumka-gift-sets"
     ? "Jhumka Gift Sets"
-    : "Handmade Flower Bouquets";
+    : product.category === "chocolate-bouquets"
+      ? "Chocolate Bouquets"
+      : "Handmade Flower Bouquets";
 
   return (
     <article className="featured-product-card">
-      <Link to={`/product/${product.slug}`} className="product-image-link" aria-label={`View ${product.name}`}>
-        <div className="product-image-wrapper">
+      <div className="product-image-wrapper">
+        <Link to={`/product/${product.slug}`} className="product-image-link" aria-label={`View ${product.name}`}>
           <img
-            src={product.images?.[0] || siteConfig.productPlaceholder}
-            alt={`${product.name} product photo from ${siteConfig.brandName}`}
+            src={images[activeImage] || siteConfig.productPlaceholder}
+            alt={`${product.name} product photo ${activeImage + 1} from ${siteConfig.brandName}`}
             loading="eager"
             decoding="async"
             width="600"
@@ -60,9 +72,24 @@ function FeaturedProductCard({ product, isInCart, onAddToCart }) {
             <span className="overlay-text">View Details</span>
             <ChevronRight size={18} />
           </div>
-          {product.badge && <span className="product-badge">{product.badge}</span>}
-        </div>
-      </Link>
+        </Link>
+        {images.length > 1 && (
+          <>
+            <button className="product-gallery-arrow previous" type="button" aria-label={`Previous ${product.name} image`} onClick={() => showImage(activeImage - 1)}>
+              <ChevronLeft size={18} />
+            </button>
+            <button className="product-gallery-arrow next" type="button" aria-label={`Next ${product.name} image`} onClick={() => showImage(activeImage + 1)}>
+              <ChevronRight size={18} />
+            </button>
+            <div className="product-gallery-dots" role="tablist" aria-label={`${product.name} images`}>
+              {images.map((image, index) => (
+                <button key={image} type="button" className={index === activeImage ? "active" : ""} onClick={() => showImage(index)} aria-label={`Show image ${index + 1}`} aria-selected={index === activeImage} role="tab" />
+              ))}
+            </div>
+          </>
+        )}
+        {product.badge && <span className="product-badge">{product.badge}</span>}
+      </div>
 
       <div className="product-content">
         <p className="product-category">{categoryLabel}</p>

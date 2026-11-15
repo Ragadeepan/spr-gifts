@@ -15,6 +15,13 @@ export const categories = [
     image: "/images/products/flower-bouquet.webp",
     description: "Handmade rose bouquets prepared for birthdays, anniversaries and special moments.",
   },
+  {
+    id: "chocolate-bouquets",
+    slug: "chocolate-bouquets",
+    name: "Chocolate Bouquets",
+    image: "/images/products/chocolate-bouquet-01.jpeg",
+    description: "Handmade chocolate bouquets for birthdays, anniversaries and special moments.",
+  },
 ];
 
 export const getCategoryBySlug = (slug) =>

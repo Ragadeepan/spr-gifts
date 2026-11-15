@@ -12,7 +12,7 @@ export const siteConfig = {
   instagramHandle: "@sprgifts.in",
   currency: "INR",
   currencySymbol: "₹",
-  canonicalUrl: "https://spr-gifts.netlify.app",
+  canonicalUrl: "https://spr-gifts-in.web.app",
   logo: "/logo/spr-gifts-logo.png",
   heroImage: "/images/hero/luxury-gift-hero.webp",
   productPlaceholder: "/images/products/product-fallback.webp",

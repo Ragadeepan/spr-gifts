@@ -52,6 +52,14 @@ export function ProductDetails() {
     );
   }, [product, category, slug]);
 
+  useEffect(() => {
+    if (!product || (product.images?.length || 0) < 2) return undefined;
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % product.images.length);
+    }, 4500);
+    return () => window.clearInterval(timer);
+  }, [product]);
+
   if (!product) {
     return (
       <section className="page section center-page">
@@ -153,6 +161,9 @@ export function ProductDetails() {
         </Link>
         <h1>{product.name}</h1>
         <p>{product.shortDescription}</p>
+        {(product.brand || product.tagline) && (
+          <p className="product-brand-line">{[product.brand, product.tagline].filter(Boolean).join(" · ")}</p>
+        )}
         <div className="price-row detail">
           {hasPrice ? (
             <>
@@ -167,6 +178,11 @@ export function ProductDetails() {
           {product.available ? "● Available" : "● Currently unavailable"}
         </span>
         <p style={{ color: "var(--text-soft)", lineHeight: 1.7 }}>{product.description}</p>
+        {product.highlights?.length > 0 && (
+          <ul className="product-highlights">
+            {product.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+          </ul>
+        )}
         <p className="delivery-note">
           Delivery charge depends on your location and will be confirmed on WhatsApp before the order is finalized.
         </p>

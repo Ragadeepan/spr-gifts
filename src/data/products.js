@@ -66,6 +66,40 @@ export const products = [
     updatedAt: "2026-09-13",
     tags: ["handmade", "rose bouquet", "flowers", "birthday", "anniversary", "gift"],
   },
+  {
+    id: "chocolate-bouquet",
+    slug: "chocolate-bouquet",
+    name: "Chocolate Bouquet",
+    category: "chocolate-bouquets",
+    price: null,
+    oldPrice: null,
+    currency: "INR",
+    priceLabel: "Price on request",
+    shortDescription: "A beautiful chocolate bouquet for birthdays, anniversaries and special moments.",
+    description:
+      "Make every celebration sweeter with our beautiful Chocolate Bouquet! A lovely combination of chocolates arranged in an attractive bouquet style, making it a perfect gift for birthdays, anniversaries, surprises, and special moments.\n\nSurprise your loved ones with a delicious and thoughtful gift from SPR GIFTS.IN.",
+    brand: "SPR GIFTS.IN",
+    tagline: "Gifts Made Special",
+    highlights: [
+      "Attractive handmade bouquet presentation",
+      "Filled with delicious chocolates",
+      "Perfect for birthdays, anniversaries, and special occasions",
+      "A sweet surprise for your loved ones",
+      "A thoughtful gifting choice",
+    ],
+    images: [
+      "/images/products/chocolate-bouquet-01.jpeg",
+      "/images/products/chocolate-bouquet-02.jpeg",
+    ],
+    video: null,
+    featured: true,
+    available: true,
+    badge: "",
+    sortOrder: 4,
+    createdAt: "2026-11-15",
+    updatedAt: "2026-11-15",
+    tags: ["chocolate bouquet", "handmade", "birthday", "anniversary", "special occasions", "gift"],
+  },
 ];
 
 export const getProductBySlug = (slug) =>
