@@ -12,6 +12,7 @@ export function Shop() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(params.get("category") || "all");
   const [availability, setAvailability] = useState("all");
+  const [sortBy, setSortBy] = useState("featured");
   const [mobileFilters, setMobileFilters] = useState(false);
 
   useEffect(() => {
@@ -27,11 +28,25 @@ export function Shop() {
     setCategory(next);
   }, [params]);
 
+  useEffect(() => {
+    if (!mobileFilters) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setMobileFilters(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [mobileFilters]);
+
   const visibleProducts = useMemo(() => {
     const term = search.trim().toLowerCase();
     const selectedCategory = getCategoryBySlug(category);
 
-    return products
+    const filtered = products
       .filter((product) => {
         const haystack = [
           product.name,
@@ -49,13 +64,32 @@ export function Shop() {
           (availability === "unavailable" && !product.available);
 
         return matchesSearch && matchesCategory && matchesAvailability;
-      })
-      .sort((a, b) => a.sortOrder - b.sortOrder);
-  }, [search, category, availability]);
+      });
+
+    return filtered.sort((a, b) => {
+      if (sortBy === "price-low" || sortBy === "price-high") {
+        if (a.price == null || b.price == null) {
+          if (a.price == null && b.price != null) return 1;
+          if (b.price == null && a.price != null) return -1;
+        }
+        const aPrice = a.price ?? 0;
+        const bPrice = b.price ?? 0;
+        return (sortBy === "price-low" ? aPrice - bPrice : bPrice - aPrice) || a.sortOrder - b.sortOrder;
+      }
+      if (sortBy === "name") return a.name.localeCompare(b.name);
+      return a.sortOrder - b.sortOrder;
+    });
+  }, [search, category, availability, sortBy]);
 
   const updateCategory = (value) => {
     setCategory(value);
     setParams(value === "all" ? {} : { category: value });
+  };
+  const clearFilters = () => {
+    setSearch("");
+    setAvailability("all");
+    updateCategory("all");
+    setSortBy("featured");
   };
 
   return (
@@ -73,6 +107,15 @@ export function Shop() {
           placeholder="Search Jhumki, roses, chocolate gifts..."
           aria-label="Search products"
         />
+        <label className="shop-sort-label">
+          <span>Sort by</span>
+          <select value={sortBy} onChange={(event) => setSortBy(event.target.value)} aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </label>
         <button className="filter-toggle" type="button" onClick={() => setMobileFilters(true)}>
           <SlidersHorizontal size={18} />
           Filters
@@ -85,20 +128,29 @@ export function Shop() {
           updateCategory={updateCategory}
           availability={availability}
           setAvailability={setAvailability}
+          onClear={clearFilters}
         />
-        <ProductGrid products={visibleProducts} emptyText="No gifts match your search or filters." />
+        <div className="shop-results">
+          <p className="shop-result-count" aria-live="polite">{visibleProducts.length} {visibleProducts.length === 1 ? "gift" : "gifts"} to explore</p>
+          <ProductGrid products={visibleProducts} emptyText="No gifts match your search or filters." />
+        </div>
       </div>
 
-      <div className={`filter-drawer ${mobileFilters ? "open" : ""}`}>
+      <div className={`filter-drawer ${mobileFilters ? "open" : ""}`} role="dialog" aria-modal="true" aria-label="Shop filters" aria-hidden={!mobileFilters}>
+        <button className="filter-backdrop" type="button" aria-label="Close filters" onClick={() => setMobileFilters(false)} tabIndex={mobileFilters ? 0 : -1} />
         <div className="filter-panel">
-          <button type="button" onClick={() => setMobileFilters(false)} aria-label="Close filters">
-            <X />
-          </button>
+          <div className="filter-panel-heading">
+            <h2>Refine gifts</h2>
+            <button type="button" onClick={() => setMobileFilters(false)} aria-label="Close filters">
+              <X />
+            </button>
+          </div>
           <Filters
             category={category}
             updateCategory={updateCategory}
             availability={availability}
             setAvailability={setAvailability}
+            onClear={clearFilters}
           />
         </div>
       </div>
@@ -106,7 +158,7 @@ export function Shop() {
   );
 }
 
-function Filters({ category, updateCategory, availability, setAvailability }) {
+function Filters({ category, updateCategory, availability, setAvailability, onClear }) {
   return (
     <aside className="filters" aria-label="Product filters">
       <h2>Filters</h2>
@@ -129,6 +181,7 @@ function Filters({ category, updateCategory, availability, setAvailability }) {
           <option value="unavailable">Out of stock</option>
         </select>
       </label>
+      <button type="button" className="text-button clear-filters" onClick={onClear}>Clear all filters</button>
     </aside>
   );
 }

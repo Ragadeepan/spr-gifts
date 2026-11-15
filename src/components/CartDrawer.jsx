@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "../utils/formatPrice";
@@ -7,6 +8,23 @@ import { CartItem } from "./CartItem";
 
 export function CartDrawer() {
   const { items, subtotal, isCartOpen, closeCart, increase, decrease, remove, clear } = useCart();
+  const [customerName, setCustomerName] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [customization, setCustomization] = useState("");
+
+  useEffect(() => {
+    if (!isCartOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") closeCart();
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isCartOpen, closeCart]);
 
   return (
     <aside className={`cart-drawer ${isCartOpen ? "open" : ""}`} aria-hidden={!isCartOpen}>
@@ -50,7 +68,18 @@ export function CartDrawer() {
             <p className="cart-delivery-note">
               Delivery charge depends on your location and will be confirmed before the order is finalized.
             </p>
-            <a className="gold-button full" href={cartWhatsAppUrl(items, subtotal)} target="_blank" rel="noreferrer">
+            <div className="cart-enquiry-fields">
+              <label>Your name <span>(optional)</span>
+                <input value={customerName} onChange={(event) => setCustomerName(event.target.value)} autoComplete="name" placeholder="Name" />
+              </label>
+              <label>Delivery pincode
+                <input value={pincode} onChange={(event) => setPincode(event.target.value)} inputMode="numeric" autoComplete="postal-code" maxLength={10} placeholder="Pincode" />
+              </label>
+              <label>Gift notes or customization <span>(optional)</span>
+                <textarea value={customization} onChange={(event) => setCustomization(event.target.value)} rows="2" placeholder="Gift preferences or message" />
+              </label>
+            </div>
+            <a className="gold-button full" href={cartWhatsAppUrl(items, subtotal, { customerName, pincode, customization })} target="_blank" rel="noreferrer">
               Order Cart on WhatsApp
             </a>
             <Link className="outline-button full" to="/shop" onClick={closeCart}>

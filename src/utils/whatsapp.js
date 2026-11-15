@@ -9,7 +9,7 @@ export function createWhatsAppUrl(
   return `${baseUrl}?text=${encodeURIComponent(message)}`;
 }
 
-export function createCartMessage(items, subtotal) {
+export function createCartMessage(items, subtotal, options = {}) {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const lines = [
@@ -31,9 +31,9 @@ export function createCartMessage(items, subtotal) {
   lines.push(`Total Items: ${totalItems}`);
   if (subtotal) lines.push(`Estimated Total: ${formatPrice(subtotal)}`);
   lines.push("");
-  lines.push("Customer name: Optional");
-  lines.push("Customization or budget: Please share your preferences if applicable");
-  lines.push("Pincode: Please share before confirming delivery");
+  lines.push(`Customer name: ${options.customerName || "Optional"}`);
+  lines.push(`Customization or budget: ${options.customization || "Please share your preferences if applicable"}`);
+  lines.push(`Pincode: ${options.pincode || "Please share before confirming delivery"}`);
   lines.push("Please confirm availability, final price and courier charges for my location before finalizing the order.");
   lines.push("This message is an enquiry and does not confirm an order.");
   lines.push(`Website: ${siteConfig.canonicalUrl}`);
@@ -69,8 +69,8 @@ export function createProductMessage(product, quantity, productUrl = "", options
   return lines.join("\n");
 }
 
-export function cartWhatsAppUrl(items, subtotal) {
-  return createWhatsAppUrl(createCartMessage(items, subtotal));
+export function cartWhatsAppUrl(items, subtotal, options) {
+  return createWhatsAppUrl(createCartMessage(items, subtotal, options));
 }
 
 export function productWhatsAppUrl(product, quantity, productUrl, options) {
