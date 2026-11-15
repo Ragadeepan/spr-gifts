@@ -3435,3 +3435,63 @@ body,
   .category-image-wrapper::before,
   .product-image-wrapper::before { transition: none !important; }
 }
+
+.bouquet-order-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: clamp(32px, 7vw, 76px);
+}
+
+.bouquet-order-card {
+  width: min(100%, 620px);
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid rgba(212, 175, 99, 0.48);
+  border-radius: 20px;
+  background: radial-gradient(620px 360px at 0 0, rgba(212, 175, 99, 0.1), transparent 72%), linear-gradient(145deg, #20150f, #0d0907 82%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32), inset 0 1px rgba(255, 239, 195, 0.06);
+}
+
+.bouquet-order-card h1 {
+  margin: 0 0 10px;
+  color: var(--ivory);
+  font: 600 clamp(1.9rem, 6vw, 3rem)/1.08 var(--serif);
+}
+
+.bouquet-order-intro,
+.bouquet-order-note { color: var(--text-soft); line-height: 1.65; }
+.bouquet-order-intro { margin: 0 0 28px; }
+.bouquet-size-fieldset { min-width: 0; margin: 0 0 24px; padding: 0; border: 0; }
+.bouquet-size-fieldset legend,
+.bouquet-budget-field { display: block; width: 100%; margin-bottom: 12px; color: var(--ivory); font-weight: 650; }
+.required-mark { margin-left: 6px; color: var(--gold-light); font-size: 0.72rem; font-weight: 500; }
+.bouquet-size-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.bouquet-size-option {
+  min-height: 58px;
+  border: 1px solid rgba(212, 175, 99, 0.38);
+  border-radius: 12px;
+  background: rgba(12, 9, 7, 0.7);
+  color: var(--ivory);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+.bouquet-size-option:hover { border-color: var(--gold-light); transform: translateY(-1px); }
+.bouquet-size-option.selected { border-color: var(--gold-light); background: linear-gradient(115deg, var(--gold), var(--gold-light)); color: #160f08; box-shadow: 0 8px 24px rgba(212, 175, 99, 0.2); }
+.bouquet-budget-field { margin-bottom: 20px; }
+.bouquet-budget-input-wrap { display: flex; align-items: center; gap: 10px; min-height: 54px; margin-top: 9px; padding: 0 15px; border: 1px solid rgba(212, 175, 99, 0.34); border-radius: 11px; background: rgba(8, 6, 5, 0.75); color: var(--gold-light); }
+.bouquet-budget-input-wrap:focus-within { border-color: var(--gold-light); box-shadow: 0 0 0 3px rgba(212, 175, 99, 0.12); }
+.bouquet-budget-input-wrap input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ivory); font: inherit; }
+.bouquet-budget-input-wrap input::placeholder { color: #9f9286; }
+.bouquet-order-error { margin: -6px 0 16px; color: #ffb9b9; font-size: 0.92rem; }
+.bouquet-whatsapp-button { width: 100%; min-height: 54px; }
+.bouquet-order-note { margin: 13px 0 0; font-size: 0.82rem; }
+.card-actions a.gold-button { border-color: rgba(241, 209, 135, 0.5); background: linear-gradient(120deg, #e2bd70, #f4dfa5 48%, #d8ab54); color: var(--black); box-shadow: var(--shadow-gold); }
+.card-actions a.gold-button:hover { border-color: var(--gold-light); background: linear-gradient(120deg, #e2bd70, #f4dfa5 48%, #d8ab54); color: var(--black); }
+
+@media (max-width: 430px) {
+  .bouquet-order-card { border-radius: 16px; }
+  .bouquet-size-options { gap: 7px; }
+  .bouquet-size-option { min-height: 52px; }
+}

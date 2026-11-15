@@ -10,6 +10,7 @@ import { siteConfig } from "../data/siteConfig";
 import { formatPrice } from "../utils/formatPrice";
 import { addJsonLd, breadcrumbJsonLd, productJsonLd, setSeo } from "../utils/seo";
 import { productWhatsAppUrl } from "../utils/whatsapp";
+import { isBouquetOrderProduct } from "../utils/bouquetOrder";
 
 export function ProductDetails() {
   const { slug } = useParams();
@@ -222,16 +223,23 @@ export function ProductDetails() {
           </label>
         </div>
         <div className="detail-actions">
-          {hasPrice && (
+          {isBouquetOrderProduct(product) ? (
+            <Link className="gold-button" to={`/order-details/${product.slug}`}>
+              <ShoppingBag size={18} />
+              Add to Cart
+            </Link>
+          ) : hasPrice ? (
             <button className="gold-button" type="button" disabled={!product.available} onClick={() => addToCart(product, quantity)}>
               <ShoppingBag size={18} />
               Add to Cart
             </button>
+          ) : null}
+          {!isBouquetOrderProduct(product) && (
+            <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl, { customerName, pincode, budget, customization })} target="_blank" rel="noreferrer">
+              <MessageCircle size={18} />
+              WhatsApp Enquiry
+            </a>
           )}
-          <a className="outline-button" href={productWhatsAppUrl(product, quantity, productUrl, { customerName, pincode, budget, customization })} target="_blank" rel="noreferrer">
-            <MessageCircle size={18} />
-            WhatsApp Enquiry
-          </a>
         </div>
       </article>
 

@@ -4,6 +4,7 @@ import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
+import { OrderDetails } from "./pages/OrderDetails";
 import { ProductDetails } from "./pages/ProductDetails";
 import { Shop } from "./pages/Shop";
 
@@ -14,6 +15,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
+        <Route path="/order-details/:slug" element={<OrderDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />

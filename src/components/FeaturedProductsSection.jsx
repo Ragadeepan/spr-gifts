@@ -1,6 +1,7 @@
 import { ChevronRight, MessageCircle, ShoppingBag } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { isBouquetOrderProduct } from "../utils/bouquetOrder";
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { products } from "../data/products";
@@ -108,7 +109,12 @@ function FeaturedProductCard({ product, isInCart, onAddToCart }) {
             <strong className="dm-price">{product.priceLabel || formatPrice(product.price)}</strong>
           )}
         </div>
-        {hasPrice ? (
+        {isBouquetOrderProduct(product) ? (
+          <Link className="add-to-cart-btn gold-button" to={`/order-details/${product.slug}`}>
+            <ShoppingBag size={16} />
+            Add to Cart
+          </Link>
+        ) : hasPrice ? (
           <button
             className="add-to-cart-btn gold-button"
             type="button"

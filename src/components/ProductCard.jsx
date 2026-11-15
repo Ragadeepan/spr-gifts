@@ -6,6 +6,7 @@ import { getCategoryById } from "../data/categories";
 import { siteConfig } from "../data/siteConfig";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "../utils/formatPrice";
+import { isBouquetOrderProduct } from "../utils/bouquetOrder";
 
 export function ProductCard({ product }) {
   const { addToCart } = useCart();
@@ -81,7 +82,12 @@ export function ProductCard({ product }) {
         </span>
         <div className="card-actions">
           <Link to={`/product/${product.slug}`}>View Product</Link>
-          {hasPrice ? (
+          {isBouquetOrderProduct(product) ? (
+            <Link to={`/order-details/${product.slug}`} className="gold-button">
+              <ShoppingBag size={16} />
+              Add to Cart
+            </Link>
+          ) : hasPrice ? (
             <button
               type="button"
               onClick={() => addToCart(product)}
