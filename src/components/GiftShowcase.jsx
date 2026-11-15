@@ -5,12 +5,13 @@ import { products } from "../data/products";
 import { siteConfig } from "../data/siteConfig";
 import { formatPrice } from "../utils/formatPrice";
 
-const showcaseProducts = products.filter(p => p.featured).slice(0, 3);
+const showcaseProducts = products.filter(p => p.featured).slice(0, 4);
 
 const productHighlights = {
   "jhumka-12-pair": ["12 Pairs", "Opening Offer", "Premium Box"],
   "jhumka-16-pair": ["16 Pairs", "Opening Offer", "Premium Box"],
   "handmade-rose-bouquet": ["Handmade", "Rose Bouquet", "Price on Request"],
+  "chocolate-bouquet": ["Chocolate Bouquet", "Handmade", "Price on Request"],
 };
 
 export function GiftShowcase() {
