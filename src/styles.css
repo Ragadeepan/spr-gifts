@@ -3561,3 +3561,112 @@ body,
   .whatsapp-icon svg { transition: none; }
   .hero-actions .gold-button:hover::after { animation: none; }
 }
+
+/* Refined motion pass: reveal, image sheen and small interaction feedback. */
+.section-title h2 {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.section-title h2::after {
+  display: block;
+  width: clamp(38px, 6vw, 68px);
+  height: 2px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-red), var(--gold-light));
+  content: "";
+  transform: scaleX(0.4);
+  transform-origin: left center;
+  opacity: 0.55;
+  transition: transform 680ms cubic-bezier(.2,.7,.2,1), opacity 450ms ease;
+}
+
+[data-scroll-reveal].is-visible .section-title h2::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.category-image-wrapper,
+.featured-product-card .product-image-wrapper,
+.shop-page .product-card .product-image {
+  position: relative;
+  isolation: isolate;
+}
+
+.category-image-wrapper::after,
+.featured-product-card .product-image-wrapper::after,
+.shop-page .product-card .product-image::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: linear-gradient(108deg, transparent 36%, rgba(255, 250, 237, .2) 50%, transparent 64%);
+  content: "";
+  pointer-events: none;
+  transform: translateX(-125%);
+}
+
+.trust-card.is-visible .trust-icon {
+  animation: trustIconArrive 560ms cubic-bezier(.2,.75,.25,1.2) both;
+  animation-delay: calc(var(--scroll-reveal-delay, 0ms) + 100ms);
+}
+
+.faq-list details[open] p {
+  animation: faqAnswerArrive 260ms ease-out both;
+}
+
+.gold-button {
+  background-size: 160% 100%;
+  transition: transform 220ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms ease,
+    background-position 420ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+.gold-button:hover,
+.gold-button:focus-visible {
+  background-position: 100% 0;
+}
+
+@keyframes imageSheen {
+  to { transform: translateX(125%); }
+}
+
+@keyframes trustIconArrive {
+  from { opacity: .55; transform: translateY(8px) scale(.88) rotate(-5deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+
+@keyframes faqAnswerArrive {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .category-card-link:hover .category-image-wrapper::after,
+  .category-card-link:focus-visible .category-image-wrapper::after,
+  .featured-product-card:hover .product-image-wrapper::after,
+  .featured-product-card:focus-within .product-image-wrapper::after,
+  .shop-page .product-card:hover .product-image::after,
+  .shop-page .product-card:focus-within .product-image::after {
+    animation: imageSheen 760ms cubic-bezier(.2,.7,.2,1) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-title h2::after {
+    transform: none !important;
+    transition: none !important;
+    opacity: 1;
+  }
+
+  .trust-card.is-visible .trust-icon,
+  .faq-list details[open] p {
+    animation: none !important;
+  }
+
+  .category-image-wrapper::after,
+  .featured-product-card .product-image-wrapper::after,
+  .shop-page .product-card .product-image::after {
+    display: none;
+  }
+}
