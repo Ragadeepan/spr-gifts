@@ -45,7 +45,7 @@ export function Layout() {
         <Outlet />
       </main>
       <a className="floating-whatsapp" href={createWhatsAppUrl()} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
-        <WhatsAppIcon size={20} />
+        <WhatsAppIcon size={24} />
         <span>WhatsApp</span>
       </a>
       <CartDrawer />
